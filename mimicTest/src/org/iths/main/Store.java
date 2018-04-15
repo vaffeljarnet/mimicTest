@@ -8,6 +8,7 @@ public class Store
 	
 	/**
 	 * Learn to respond to a request
+	 * 
 	 * @param request
 	 * @param response
 	 */
