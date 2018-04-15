@@ -6,7 +6,8 @@ import org.iths.main.MockTest;
 import org.junit.Test;
 
 public class TestMockTest {
-
+	
+	//Example test
 	@Test
 	public void test() {
 		MockTest mock = new MockTest();
