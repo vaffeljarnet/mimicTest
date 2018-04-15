@@ -1,0 +1,14 @@
+--------------FETCHING-----------------
+1. In Git Repositories go to Remotes - Origin and right click the line with the green arrow
+2. Select Fetch
+3. If there are changes, go to Branches - Local and right click Master
+4. Select Merge and in the window that pops up select the Remote branch and press Ok
+
+Changes should then be visible in Eclipse project
+
+--------------Commit-----------------
+1. Save the file you want to commit
+2. In Git Staging move the files you want to commit from Unstaged to Staged
+3. Add a comment and press Commit and push
+
+Your changes/files should be commited and pushed to the remote repository
