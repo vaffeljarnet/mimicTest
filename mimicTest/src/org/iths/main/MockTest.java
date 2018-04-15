@@ -10,7 +10,7 @@ public class MockTest {
 	public MockTest() {
 		storedAnswers = new HashMap<String, String>();
 	}
-//hejhejjuju
+//hejhejjujujg
 	public void storeQuestionAndAnswer(String key, String value) {
 		storedAnswers.put(key, value);
 	}
