@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class TestMockTest {
 	
-	//Example test
+	//Example test with test
 	@Test
 	public void test() {
 		MockTest mock = new MockTest();
