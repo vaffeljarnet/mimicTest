@@ -36,11 +36,33 @@ public class TestStore {
 		assertTrue(thrown);
 	}
 	
-	public void TestStore114NullObjectGetResponse() {
+	@Test
+	public void TestStore114NullResponseGetResponse() {
 		Store mock = new Store();
 		mock.learnResponse("1+1", null);
 		String response = mock.getResponse("1+1");
 		assertNull(response);
-	}	
+	}
+	
+	@Test
+	public void TestStore115NullObjectGetResponse() {
+		Store mock = new Store();
+		RequestResponse reqRes = null;
+		mock.learnResponseWithNull("Are you null?", reqRes);
+		String response = mock.getResponse("Are you null?");
+		assertNull(response);
+	}
+	
+	@Test
+	public void TestStore116UnlearnAll() {
+		boolean thrown = false;
+		Store mock = new Store();
+		mock.learnResponse("1+1", "2");
+		String response = mock.getResponse("1+1");
+		assertEquals("2",response);
+		mock.unlearnAll();
+		response = mock.getResponse("1+1");
+		assertNull(response);
+	}
 
 }
