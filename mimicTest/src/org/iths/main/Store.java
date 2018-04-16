@@ -4,6 +4,10 @@ import java.util.Hashtable;
 
 public class Store
 {  //yo
+	//can see changes
+	//Request and Response are two variables
+	//Johan
+
 	private Hashtable<String, RequestResponse> responses = new Hashtable<String, RequestResponse>();
 	
 	/**

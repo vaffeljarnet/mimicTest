@@ -24,7 +24,7 @@ public class MockTest {
 			}else {
 				Random generator = new Random();
 				Object[] values = storedAnswers.values().toArray();
-				return (String)values[generator.nextInt(values.length)];
+				return (String)values[generator.nextInt(values.length)]; //helloo
 			}
 
 		}
