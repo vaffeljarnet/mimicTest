@@ -27,9 +27,9 @@ public class TestRequestResponse {
 	@Test
 	public void invalidNullRequest() {
 		Store mock = new Store();
-		mock.learnResponse(null, null);
+		mock.learnResponse(null, "2");
 		String answer = mock.getResponse(null);
-		assertEquals(null,answer);
+		assertEquals("2",answer);
 	}
 
 }
