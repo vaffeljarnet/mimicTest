@@ -1,4 +1,4 @@
-package org.iths.test;
+package org.iths.test.sprint1;
 
 import static org.junit.Assert.*;
 
