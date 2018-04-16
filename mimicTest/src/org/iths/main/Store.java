@@ -23,6 +23,10 @@ public class Store
 		responses.put(request, new RequestResponse(request, response));
 	}
 	
+	public void learnResponseWithNull(String request, RequestResponse reqRes) {
+		responses.put(request, reqRes);
+	}
+	
 	/**
 	 * @param request
 	 * @return The response to a request

@@ -17,7 +17,7 @@ public class TestRequestResponse {
 	}
 	
 	@Test
-	public void validNullRequest() {
+	public void validNullRequest1() {
 		Store mock = new Store();
 		mock.learnResponse("1+1", null);
 		String answer = mock.getResponse("1+1");
@@ -25,11 +25,20 @@ public class TestRequestResponse {
 	}
 	
 	@Test
+	public void validNullRequest2() {
+		Store mock = new Store();
+		RequestResponse reqRes = null;
+		mock.learnResponseWithNull("1+1", reqRes);
+		String answer = mock.getResponse("1+1");
+		assertEquals(null,answer);
+	}
+	
+	@Test
 	public void invalidNullRequest() {
 		Store mock = new Store();
-		mock.learnResponse(null, null);
+		mock.learnResponse(null, "2");
 		String answer = mock.getResponse(null);
-		assertEquals(null,answer);
+		assertEquals("2",answer);
 	}
 
 }
