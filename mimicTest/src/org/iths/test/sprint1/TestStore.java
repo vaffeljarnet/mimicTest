@@ -1,6 +1,11 @@
 package org.iths.test.sprint1;
 
 import static org.junit.Assert.*;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import org.iths.main.RequestResponse;
 
 import org.iths.main.Store;
@@ -8,6 +13,8 @@ import org.junit.Test;
 
 public class TestStore {
 	
+	
+	//More and different data?
 	@Test
 	public void TestStore111ValidValues() {
 		Store mock = new Store();
@@ -44,6 +51,7 @@ public class TestStore {
 		assertNull(response);
 	}
 	
+	//Discuss together on how to present
 	@Test
 	public void TestStore115NullObjectGetResponse() {
 		Store mock = new Store();
@@ -53,6 +61,7 @@ public class TestStore {
 		assertNull(response);
 	}
 	
+	//Should this be like this?
 	@Test
 	public void TestStore116UnlearnAll() {
 		Store mock = new Store();
@@ -62,6 +71,37 @@ public class TestStore {
 		mock.unlearnAll();
 		response = mock.getResponse("1+1");
 		assertNull(response);
+	}
+	
+	@Test
+	public void TestStore117MultiLineValues() {
+		Store mock = new Store();
+		String multLine = "This is the first line, \n"
+				+ "this is the second line.";
+		mock.learnResponse("Two lines", multLine);
+		String answer = mock.getResponse("Two lines");
+		System.out.println(multLine);
+		assertEquals(multLine,answer);
+	}
+	
+	@Test
+	public void TestStore118NonUSCharacters() {
+		Store mock = new Store();
+		HashMap<String, String> charachterList = new HashMap();
+		charachterList.put("å", "check");
+		charachterList.put("ñ", "check");
+		charachterList.put("ô", "check");
+		Iterator it = charachterList.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        String key = (String) pair.getKey();
+	        String value = (String) pair.getValue();
+	        mock.learnResponse(key, value);
+	        String response = mock.getResponse(key);
+	        assertEquals("check",response);
+	        System.out.println(key);
+	        it.remove(); // avoids a ConcurrentModificationException
+	    }
 	}
 
 }
