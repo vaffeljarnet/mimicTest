@@ -55,7 +55,6 @@ public class TestStore {
 	
 	@Test
 	public void TestStore116UnlearnAll() {
-		boolean thrown = false;
 		Store mock = new Store();
 		mock.learnResponse("1+1", "2");
 		String response = mock.getResponse("1+1");
