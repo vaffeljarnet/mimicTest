@@ -8,7 +8,7 @@ import org.junit.Test;
 public class TestRequestResponse {
 
 	@Test
-	public void ID114CreateObjectSetGet() {
+	public void TestRequestResponse111CreateObjectSetGet() {
 		RequestResponse reqRes = new RequestResponse("1+1","2");
 		assertEquals("1+1",reqRes.getRequest());
 		assertEquals("2",reqRes.getResponse());

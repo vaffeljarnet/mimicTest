@@ -7,10 +7,9 @@ import org.iths.main.Store;
 import org.junit.Test;
 
 public class TestStore {
-	//TODO Add test case ID
 	
 	@Test
-	public void ID111ValidValues() {
+	public void TestStore111ValidValues() {
 		Store mock = new Store();
 		mock.learnResponse("1+1", "2");
 		String answer = mock.getResponse("1+1");
@@ -18,7 +17,7 @@ public class TestStore {
 	}
 	
 	@Test
-	public void ID112ValidNullRequest() {
+	public void TestStore112ValidNullRequest() {
 		Store mock = new Store();
 		mock.learnResponse("1+1", null);
 		String answer = mock.getResponse("1+1");
@@ -26,13 +25,22 @@ public class TestStore {
 	}
 	
 	@Test
-	public void ID113InvalidNullRequest() {
+	public void TestStore113LearnResponseWithNullRequest() {
+		boolean thrown = false;
 		Store mock = new Store();
+		try {
 		mock.learnResponse(null, "2");
-		String answer = mock.getResponse(null);
-		assertEquals("2",answer);
+		}catch(NullPointerException e) {
+			thrown = true;
+		}
+		assertTrue(thrown);
 	}
 	
-	
+	public void TestStore114NullObjectGetResponse() {
+		Store mock = new Store();
+		mock.learnResponse("1+1", null);
+		String response = mock.getResponse("1+1");
+		assertNull(response);
+	}	
 
 }
