@@ -3,10 +3,7 @@ package org.iths.main;
 import java.util.Hashtable;
 
 public class Store
-{  //yo
-	//can see changes
-	//Request and Response are two variables
-	//Johan
+{  
 
 	private Hashtable<String, RequestResponse> responses = new Hashtable<String, RequestResponse>();
 	
@@ -23,7 +20,14 @@ public class Store
 		responses.put(request, new RequestResponse(request, response));
 	}
 	
-	public void learnResponseWithNull(String request, RequestResponse reqRes) {
+	
+	/**
+	 * Test method for adding a null object to the hastable value. Will not be used in final implementation
+	 * @param request String
+	 * @param reqRes RequestRespone
+	 */
+	public void learnResponseWithNull(String request, RequestResponse reqRes)
+	{
 		responses.put(request, reqRes);
 	}
 	
