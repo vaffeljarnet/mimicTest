@@ -1,7 +1,7 @@
 # mimicTest - Manual
 
 ## Intro
-An ongoing educational project in agile development, from a testing perspective
+An ongoing educational project in agile development, from a testing perspective.
 
 ## Public methods to be tested in Store.java class
 * **learnResponse()** metod returnerar inget och tar emot två parametrar av typen String. 
