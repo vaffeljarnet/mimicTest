@@ -39,23 +39,20 @@ public class TestStore {
 		}catch(NullPointerException e) {
 			thrown = true;
 		}
-		assertTrue(thrown);
+		assertFalse(thrown);
 	}
 	
-	//TODO add invalid test case
-	@Test
-	public void TestStore114InvalidData() {
-		
-	}
-	
-
 	@Test
 	public void TestStore115NullObjectGetResponse() {
+		boolean thrown = false;
 		Store mock = new Store();
 		RequestResponse reqRes = null;
+		try {
 		mock.learnResponseWithNull("Are you null?", reqRes);
-		String response = mock.getResponse("Are you null?");
-		assertNull(response);
+		}catch(NullPointerException e){
+			thrown = true;
+		}
+		assertFalse(thrown);
 	}
 	
 
