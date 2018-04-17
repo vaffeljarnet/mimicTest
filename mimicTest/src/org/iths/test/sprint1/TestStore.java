@@ -14,7 +14,6 @@ import org.junit.Test;
 public class TestStore {
 	
 	
-	//More and different data?
 	@Test
 	public void TestStore111ValidValues() {
 		Store mock = new Store();
@@ -43,15 +42,13 @@ public class TestStore {
 		assertTrue(thrown);
 	}
 	
+	//TODO add invalid test case
 	@Test
-	public void TestStore114NullResponseGetResponse() {
-		Store mock = new Store();
-		mock.learnResponse("1+1", null);
-		String response = mock.getResponse("1+1");
-		assertNull(response);
+	public void TestStore114InvalidData() {
+		
 	}
 	
-	//Discuss together on how to present
+
 	@Test
 	public void TestStore115NullObjectGetResponse() {
 		Store mock = new Store();
@@ -61,7 +58,7 @@ public class TestStore {
 		assertNull(response);
 	}
 	
-	//Should this be like this?
+
 	@Test
 	public void TestStore116UnlearnAll() {
 		Store mock = new Store();
