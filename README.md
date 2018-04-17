@@ -19,6 +19,7 @@ Den kontrollerar om requestResponse är null, då ska den returnera null, annars r
 Den skapar en ny, tom hashtable.
 
 ## Public methods to be tested in RequestResponse.java class
+* **
 	 
 ## Dependencies
 JUnit 4.12 [Download](https://github.com/junit-team/junit4/wiki/Download-and-Install) 
