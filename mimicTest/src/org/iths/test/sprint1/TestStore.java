@@ -32,7 +32,7 @@ public class TestStore {
 	}
 	
 	@Test
-	public void TestStore113LearnResponseWithNullRequest() {
+	public void TestStore113NullRequestLearnResponse() {
 		boolean thrown = false;
 		Store mock = new Store();
 		try {
@@ -44,7 +44,7 @@ public class TestStore {
 	}
 	
 	@Test
-	public void TestStore115NullObjectGetResponse() {
+	public void TestStore115NullObjectLearnResponse() {
 		boolean thrown = false;
 		Store mock = new Store();
 		RequestResponse reqRes = null;
@@ -95,7 +95,7 @@ public class TestStore {
 	        String response = mock.getResponse(key);
 	        assertEquals("check",response);
 	        System.out.println(key);
-	        it.remove(); // avoids a ConcurrentModificationException
+	        it.remove();
 	    }
 	}
 
