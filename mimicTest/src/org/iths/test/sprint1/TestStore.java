@@ -18,6 +18,7 @@ public class TestStore {
 	@Test
 	public void TestStore111ValidValues() {
 		Store mock = new Store();
+		
 		mock.learnResponse("1+1", "2");
 		String answer = mock.getResponse("1+1");
 		assertEquals("2",answer);
