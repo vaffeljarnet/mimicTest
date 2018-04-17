@@ -36,7 +36,6 @@ public class Store
 	public String getResponse(String request)
 	{
 		RequestResponse requestReponse = responses.get(request);
-		responses.
 		if(requestReponse == null)
 		{
 			return null;
