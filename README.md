@@ -19,8 +19,22 @@ Den kontrollerar om requestResponse är null, då ska den returnera null, annars r
 Den skapar en ny, tom hashtable.
 
 ## Public methods to be tested in RequestResponse.java class
-* **
-	 
+I klassen RequestResponse finns det två privata variabler av typen String som heter request och response.
+
+* **RequestResponse()** är en konstruktor som tar emot två parametrar av typen String och sätter de parametrar ihop med variablerna(ex: this.request=request).
+
+* **getRequest()** metod returnerar en request.
+Den ger oss tillgång till den privata variabeln request.
+
+* **setRequest()** metod returnerar inget och tar emot en parameter av typen String. 
+Den sätter värde och ger oss tillgång till den privata variabeln request.
+
+* **getResponse()** metod returnerar en response.
+Den ger oss tillgång till den privata variabeln response.
+	
+* **setResponse()**	metod returnerar inget och tar emot en parameter av typen String. 
+Den sätter värde och ger oss tillgång till den privata variabeln response.
+	
 ## Dependencies
 JUnit 4.12 [Download](https://github.com/junit-team/junit4/wiki/Download-and-Install) 
 
