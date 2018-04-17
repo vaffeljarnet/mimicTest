@@ -18,7 +18,7 @@ Den kontrollerar om requestResponse är null, då ska den returnera null, annars r
 * **unlearnAll()** metod returnerar inget och tar inte emot några parametrar.
 Den skapar en ny, tom hashtable.
 
-## Public methods to be tested in RequestResponse.java class
+## Public methods in RequestResponse.java class
 I klassen RequestResponse finns det två privata variabler av typen String som heter request och response.
 
 * **RequestResponse()** är en konstruktor som tar emot två parametrar av typen String och sätter de parametrar ihop med variablerna(ex: this.request=request).
