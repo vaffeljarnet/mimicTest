@@ -17,7 +17,6 @@ public class TestStore {
 	@Test
 	public void TestStore111ValidValues() {
 		Store mock = new Store();
-		
 		mock.learnResponse("1+1", "2");
 		String answer = mock.getResponse("1+1");
 		assertEquals("2",answer);
@@ -42,20 +41,6 @@ public class TestStore {
 		}
 		assertFalse(thrown);
 	}
-	
-	@Test
-	public void TestStore115NullObjectLearnResponse() {
-		boolean thrown = false;
-		Store mock = new Store();
-		RequestResponse reqRes = null;
-		try {
-		mock.learnResponseWithNull("Are you null?", reqRes);
-		}catch(NullPointerException e){
-			thrown = true;
-		}
-		assertFalse(thrown);
-	}
-	
 
 	@Test
 	public void TestStore116UnlearnAll() {
