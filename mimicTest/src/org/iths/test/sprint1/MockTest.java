@@ -1,4 +1,4 @@
-package org.iths.main;
+package org.iths.test.sprint1;
 
 import java.util.HashMap;
 import java.util.Random;

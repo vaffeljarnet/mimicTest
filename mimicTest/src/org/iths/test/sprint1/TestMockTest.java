@@ -2,7 +2,6 @@ package org.iths.test.sprint1;
 
 import static org.junit.Assert.*;
 
-import org.iths.main.MockTest;
 import org.junit.Test;
 
 public class TestMockTest {
