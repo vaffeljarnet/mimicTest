@@ -20,16 +20,6 @@ public class Store
 	}
 
 	/**
-	 * Test method for adding a null object to the hastable value. Will not be used in final implementation
-	 * @param request String
-	 * @param reqRes RequestRespone
-	 */
-	public void learnResponseWithNull(String request, RequestResponse reqRes)
-	{
-		responses.put(request, reqRes);
-	}
-
-	/**
 	 * @param request
 	 * @return The response to a request
 	 */

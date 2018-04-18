@@ -1,4 +1,4 @@
-package org.iths.main;
+package org.iths.test.sprint1;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -10,7 +10,7 @@ public class MockTest {
 	public MockTest() {
 		storedAnswers = new HashMap<String, String>();
 	}
-//hejhejjujujg
+
 	public void storeQuestionAndAnswer(String key, String value) {
 		storedAnswers.put(key, value);
 	}
