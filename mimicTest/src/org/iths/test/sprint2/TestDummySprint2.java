@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestMockTestSprint2 {
+public class TestDummySprint2 {
 	
 	/**
 	 * Test for storing a request with response and answer directly
 	 */
 	@Test
 	public void test() {
-		MockTestSprint2 mock = new MockTestSprint2();
+		DummySprint2 mock = new DummySprint2();
 		String response = mock.sendGetRequest("localhost:8080/1+1?storeRequest=2");
 		System.out.println(response);
 	}
@@ -21,7 +21,7 @@ public class TestMockTestSprint2 {
 	 */
 	@Test
 	public void test2() {
-		MockTestSprint2 mock = new MockTestSprint2();
+		DummySprint2 mock = new DummySprint2();
 		String test = mock.sendGetRequest("localhost:8080/1+1?storeRequest=3");
 		String response = mock.sendGetRequest("localhost:8080/hej?learn");
 		System.out.println(response);
@@ -32,7 +32,7 @@ public class TestMockTestSprint2 {
 	 */
 	@Test
 	public void test3() {
-		MockTestSprint2 mock = new MockTestSprint2();
+		DummySprint2 mock = new DummySprint2();
 		//String test = mock.sendGetRequest("localhost:8080/1+1?storeRequest=2");
 		String response = mock.sendGetRequest("localhost:8080/1+1");
 		System.out.println(response);

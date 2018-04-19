@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 import org.iths.main.RequestResponse;
 
-public class MockTestSprint2 {
+public class DummySprint2 {
 
 	private HashMap<String, RequestResponse> list = new HashMap<>();
 
-	public MockTestSprint2() {
+	public DummySprint2() {
 
 	}
 
