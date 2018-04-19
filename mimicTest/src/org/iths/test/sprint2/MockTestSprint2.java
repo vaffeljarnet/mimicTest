@@ -45,8 +45,8 @@ public class MockTestSprint2 {
 			String response = sc.nextLine();
 
 			if(list.containsKey(request)) {
-				System.out.print("Request already have an answer:"+list.get(request).getResponse());
-				System.out.print("Do you want to replace it with: "+response+"? Enter Yes/No:");
+				System.out.print("Request already have an answer: "+list.get(request).getResponse()+".");
+				System.out.print(" Do you want to replace it with: "+response+"? Enter Yes/No:");
 				String reply = sc.nextLine();
 				if(reply.equalsIgnoreCase("Yes")) {
 					list.replace(request, new RequestResponse(request, response));
