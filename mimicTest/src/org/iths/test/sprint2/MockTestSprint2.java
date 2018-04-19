@@ -26,8 +26,8 @@ public class MockTestSprint2 {
 	 * 
 	 * 3. localhost:8080/XXX
 	 * Ask the system a question XXX and if the system has 
-	 * a response its gives a response. Otherwhise notes that
-	 * it has no response.
+	 * a response its gives a response. Otherwise asks the user 
+	 * if they want to store a response.
 	 *  
 	 * @param request String - in above specified format
 	 * @return String - with response from request
@@ -78,7 +78,7 @@ public class MockTestSprint2 {
 					sc.close();
 				}
 			}
-			
+
 			return list.get(request).getResponse();	
 		}else if (getRequest.contains("localhost:8080/") && !getRequest.contains("?storeRequest=") && !getRequest.contains("?learn=")){
 			String request = getRequest.replace("localhost:8080/", "");

@@ -33,7 +33,7 @@ public class TestMockTestSprint2 {
 	@Test
 	public void test3() {
 		MockTestSprint2 mock = new MockTestSprint2();
-		String test = mock.sendGetRequest("localhost:8080/1+1?storeRequest=2");
+		//String test = mock.sendGetRequest("localhost:8080/1+1?storeRequest=2");
 		String response = mock.sendGetRequest("localhost:8080/1+1");
 		System.out.println(response);
 	}
