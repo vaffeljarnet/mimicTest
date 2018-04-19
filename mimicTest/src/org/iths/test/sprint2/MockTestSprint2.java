@@ -66,7 +66,7 @@ public class MockTestSprint2 {
 			}
 			
 			return list.get(request).getResponse();	
-		}else {
+		}else if (getRequest.contains("localhost:8080/") && !getRequest.contains("?storeRequest=") && !getRequest.contains("?learn=")){
 			String request = getRequest.replace("localhost:8080/", "");
 			if(!list.containsKey(request)) {
 				return "No answer to this question";
@@ -74,6 +74,8 @@ public class MockTestSprint2 {
 				return list.get(request).getResponse();
 			}
 			
+		}else {
+			return "Invalid request";
 		}
 	}
 
