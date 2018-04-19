@@ -14,9 +14,23 @@ public class MockTestSprint2 {
 	}
 
 	/**
-	 * 	
-	 * @param request
-	 * @return
+	 * Mock for sending getRequest to the Mimic System. Only takes url in 3 formats 
+	 * with different functions:
+	 *
+	 * 1. localhost:8080/XXX?storeRequest=YYY 
+	 * Will directly store a question XXX with response YYY.
+	 * 
+	 * 2. localhost:8080/XXX?learn 
+	 * Will prompt you to give a response to XXX and if request 
+	 * already exists, ask you if you want to replace it. 
+	 * 
+	 * 3. localhost:8080/XXX
+	 * Ask the system a question XXX and if the system has 
+	 * a response its gives a response. Otherwhise notes that
+	 * it has no response.
+	 *  
+	 * @param request String - in above specified format
+	 * @return String - with response from request
 	 */
 	public String sendGetRequest(String getRequest) {
 		if(getRequest.contains("?storeRequest=")) {
