@@ -1,7 +1,5 @@
 package org.iths.test.sprint2;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class TestDummySprint2 {
@@ -23,7 +21,7 @@ public class TestDummySprint2 {
 	public void test2() {
 		DummySprint2 mock = new DummySprint2();
 		String test = mock.sendGetRequest("localhost:8080/1+1?storeRequest=3");
-		String response = mock.sendGetRequest("localhost:8080/hej?learn");
+		String response = mock.sendGetRequest("localhost:8080/1+1?learn");
 		System.out.println(response);
 	}
 	
@@ -33,7 +31,7 @@ public class TestDummySprint2 {
 	@Test
 	public void test3() {
 		DummySprint2 mock = new DummySprint2();
-		//String test = mock.sendGetRequest("localhost:8080/1+1?storeRequest=2");
+		String test = mock.sendGetRequest("localhost:8080/1+1?storeRequest=2");
 		String response = mock.sendGetRequest("localhost:8080/1+1");
 		System.out.println(response);
 	}
