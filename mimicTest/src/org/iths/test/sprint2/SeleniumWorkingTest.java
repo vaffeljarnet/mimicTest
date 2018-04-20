@@ -11,6 +11,6 @@ public class SeleniumWorkingTest {
 		driver.clickLink();
 		driver.delay(2000);
 		driver.quitSelenium();
-	}	
+	}	 
 
 }

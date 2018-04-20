@@ -20,7 +20,7 @@ public class TestSelenium {
 	
 	public void openURL(String siteURL) {
 		webdriver.get(siteURL);
-	}
+	} 
 	
 	public void clickLink() {
 		WebElement element = webdriver.findElement(By.cssSelector("div.right-section-container > ul:nth-of-type(1) > li > a.arrowLink"));
