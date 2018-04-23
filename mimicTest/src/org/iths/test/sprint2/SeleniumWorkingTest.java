@@ -1,5 +1,6 @@
 package org.iths.test.sprint2;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class SeleniumWorkingTest {
@@ -7,10 +8,11 @@ public class SeleniumWorkingTest {
 	@Test
 	public void test() {
 		TestSelenium driver = new TestSelenium();
-		driver.openURL("http://www.ikea.se"); 
-		driver.clickLink();
+		driver.openURL("http://localhost:8080/2+2"); 
+		driver.sendText();
+		driver.openURL("http://localhost:8080/2+2");
+		Assert.assertEquals("4", driver.getValue());
 		driver.delay(2000);
 		driver.quitSelenium();
 	}	  
-
 }

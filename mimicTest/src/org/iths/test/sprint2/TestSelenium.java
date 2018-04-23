@@ -15,6 +15,7 @@ public class TestSelenium {
 	public TestSelenium() {
 		System.setProperty("webdriver.chrome.driver", "commonFiles/chromedrive/chromedriver.exe");
 		webdriver = new ChromeDriver();
+		webdriver.manage().window().maximize();
 		webdriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	
@@ -22,9 +23,21 @@ public class TestSelenium {
 		webdriver.get(siteURL);
 	}  
 	
-	public void clickLink() {
-		WebElement element = webdriver.findElement(By.cssSelector("div.right-section-container > ul:nth-of-type(1) > li > a.arrowLink"));
+	public void sendText() {
+		WebElement element = webdriver.findElement(By.xpath("/html/body/form/textarea"));
 		element.click();
+		this.delay(2000);
+		element.sendKeys("4");
+	}
+
+	public void clickLearn() {
+		WebElement element = webdriver.findElement(By.cssSelector("#learn"));
+		element.click();
+	}
+	
+	public String getValue() {
+		WebElement element = webdriver.findElement(By.cssSelector("#learn"));
+		return element.getText();
 	}
 	
 	public void delay(int milliseconds) {
