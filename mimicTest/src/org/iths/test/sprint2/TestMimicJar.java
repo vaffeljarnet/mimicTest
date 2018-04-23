@@ -10,11 +10,14 @@ public class TestMimicJar {
 	private HttpServiceCaller service;
 	
 	@Test
-	public void test() {
+	public void learnResponse() {
 		service = new HttpServiceCaller();
 		service.executeGetRequest(host + "LearnNextResponse?text=2");
 		String response = service.executeGetRequest(host + "1+1");
 		Assert.assertEquals(response, "2");
 	}
 
+	
+	
+	
 }
