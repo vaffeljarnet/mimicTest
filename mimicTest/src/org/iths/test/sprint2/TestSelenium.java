@@ -23,13 +23,13 @@ public class TestSelenium {
 		webdriver.get(siteURL);
 	}  
 	
-	public void sendText() {
+	public void sendText(String text) {
 		WebElement element = webdriver.findElement(By.xpath("/html/body/form/textarea"));
 		element.click();
-		this.delay(2000);
-		element.sendKeys("4");
+		delay(2000);
+		element.sendKeys(text);
 	}
-
+	
 	public void clickLearn() {
 		WebElement element = webdriver.findElement(By.cssSelector("#learn"));
 		element.click();

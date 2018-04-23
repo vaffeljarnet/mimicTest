@@ -9,7 +9,8 @@ public class SeleniumWorkingTest {
 	public void test() {
 		TestSelenium driver = new TestSelenium();
 		driver.openURL("http://localhost:8080/2+2"); 
-		driver.sendText();
+		driver.sendText("4");
+		driver.clickLearn();
 		driver.openURL("http://localhost:8080/2+2");
 		Assert.assertEquals("4", driver.getValue());
 		driver.delay(2000);
