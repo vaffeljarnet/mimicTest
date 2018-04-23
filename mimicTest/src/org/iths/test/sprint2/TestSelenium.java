@@ -36,7 +36,7 @@ public class TestSelenium {
 	}
 	
 	public String getValue() {
-		WebElement element = webdriver.findElement(By.cssSelector("#learn"));
+		WebElement element = webdriver.findElement(By.cssSelector("body"));
 		return element.getText();
 	}
 	
