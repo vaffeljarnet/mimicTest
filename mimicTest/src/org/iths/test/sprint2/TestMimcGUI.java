@@ -7,7 +7,7 @@ public class TestMimcGUI {
 	
 	String host = "http://localhost:8080/";
 	
-//	@Test
+    @Test
 	public void learnReqResp() {
 		
 //		this test passed, need to "unlearn" first if this is to be run more than one time
