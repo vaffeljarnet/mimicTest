@@ -20,21 +20,22 @@ public class SeleniumWorkingTest {
 		driver.quitSelenium();
 	}	
 
-//	@Test
+	@Test
 	public void changeResp() {
 		
 //		This I need help with
 		
 		TestSelenium driver = new TestSelenium();
-		driver.openURL(""); 
-		driver.sendText("");
+		driver.openURL("http://localhost:8080/1+1"); 
+		driver.sendText("3");
 		driver.clickLearn();
-		driver.openURL("");
-		Assert.assertEquals("", driver.getValue());
+		driver.openURL("http://localhost:8080/LearnNextResponse?text=2");
+		driver.openURL("http://localhost:8080/1+1");
+		Assert.assertEquals("2", driver.getValue());
 		driver.quitSelenium();
 	}	
 	
-//	@Test
+	@Test
 	public void unlearn() {
 		
 //		shows "nothing to unlearn" if you don't add line 46?!
@@ -43,7 +44,7 @@ public class SeleniumWorkingTest {
 		driver.openURL("http://localhost:8080/5+5"); 
 		driver.sendText("10");
 		driver.clickLearn();
-		driver.openURL("http://localhost:8080/5+5");
+		//driver.openURL("http://localhost:8080/5+5");
 		driver.openURL("http://localhost:8080/unlearn");
 		Assert.assertEquals("OK", driver.getValue());
 		driver.quitSelenium();
