@@ -1,77 +1,109 @@
 package org.iths.test.sprint2;
 
+import static org.junit.Assert.fail;
+
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class TestMimcGUI {
-	
-	String host = "http://localhost:8080/";
-	
-    @Test
-	public void TestMimicGUI111learnReqResp() {
-		
-		MimicGuiSelenium driver = new MimicGuiSelenium();
-		driver.openURL(host+"2+2");
-		driver.sendText("4");
-		driver.clickLearn();
-		driver.openURL(host+"2+2");
-		Assert.assertEquals("4", driver.getValue());
-		driver.openURL(host+"unlearn");
-		driver.quitSelenium();
-	}	
 
+	private String host = "http://localhost:8080/";
+	private MimicJarHelper helper = new MimicJarHelper();
+	private MimicGuiSelenium driver;
+
+	/**
+	 * Makes a request for a not stored request, uses the
+	 * response form to set a response and requests again
+	 * to check that the response has been stored.
+	 */
+	@Test
+	public void TestMimicGUI111learnReqResp() {
+		if(helper.jarIsRunning()) {
+
+			driver = new MimicGuiSelenium();
+			driver.openURL(host+"2+2");
+			driver.sendText("4");
+			driver.clickLearn();
+			driver.openURL(host+"2+2");
+			Assert.assertEquals("4", driver.getValue());
+			driver.openURL(host+"unlearn");
+
+		}else {
+			fail(helper.errorString());
+		}
+	}	
+	
+	/**
+	 * Stores a request with wrong response using the 
+	 * response form, relearns that same request and checks
+	 * that the new response is stored for the request. 
+	 */
 	@Test
 	public void TestMimicGUI112changeResp() {
-		
-		MimicGuiSelenium driver = new MimicGuiSelenium();
-		driver.openURL(host+"1+1"); 
-		driver.sendText("3");
-		driver.clickLearn();
-		driver.openURL(host+"1+1");
-		Assert.assertEquals("3", driver.getValue());
-		driver.openURL(host+"LearnNextResponse?text=2");
-		driver.openURL(host+"1+1");
-		Assert.assertEquals("2", driver.getValue());
-		driver.openURL(host+"unlearn");
-		driver.quitSelenium();
+		if(helper.jarIsRunning()) {
+			driver = new MimicGuiSelenium();
+			driver.openURL(host+"1+1"); 
+			driver.sendText("3");
+			driver.clickLearn();
+			driver.openURL(host+"1+1");
+			Assert.assertEquals("3", driver.getValue());
+			driver.openURL(host+"LearnNextResponse?text=2");
+			driver.openURL(host+"1+1");
+			Assert.assertEquals("2", driver.getValue());
+			driver.openURL(host+"unlearn");
+
+		}else {
+			fail(helper.errorString());
+		}
 	}	
-	
+
+	/**
+	 * Stores a request using the response form and
+	 * immediately tries to unlearn it. 
+	 */
 	@Test
 	public void TestMimicGUI113unlearnWithoutRequest() {
+		if(helper.jarIsRunning()) {
 
-		MimicGuiSelenium driver = new MimicGuiSelenium();
-		driver.openURL(host+"5+5"); 
-		driver.sendText("10");
-		driver.clickLearn();
-		driver.openURL(host+"unlearn");
-		Assert.assertEquals("OK", driver.getValue());
-		driver.openURL(host+"5+5"); 
-		driver.openURL(host+"unlearn");
-		driver.quitSelenium();
+			driver = new MimicGuiSelenium();
+			driver.openURL(host+"5+5"); 
+			driver.sendText("10");
+			driver.clickLearn();
+			driver.openURL(host+"unlearn");
+			Assert.assertEquals("OK", driver.getValue());
+			driver.openURL(host+"5+5"); 
+			driver.openURL(host+"unlearn");
+
+		}else {
+			fail(helper.errorString());
+		}
 	}
 	
+	/**
+	 * Stores a request using the response form, makes
+	 * that sam request again and then unlearns it.
+	 */
 	@Test
 	public void TestMimicGUI114unlearnWithRequest() {
-		
-		MimicGuiSelenium driver = new MimicGuiSelenium();
-		driver.openURL(host+"5+5"); 
-		driver.sendText("10");
-		driver.clickLearn();
-		driver.openURL(host+"5+5"); 
-		driver.openURL(host+"unlearn");
-		Assert.assertEquals("OK", driver.getValue());
-		driver.quitSelenium();
+		if(helper.jarIsRunning()) {
+
+			driver = new MimicGuiSelenium();
+			driver.openURL(host+"5+5"); 
+			driver.sendText("10");
+			driver.clickLearn();
+			driver.openURL(host+"5+5"); 
+			driver.openURL(host+"unlearn");
+			Assert.assertEquals("OK", driver.getValue());
+
+		}else {
+			fail(helper.errorString());
+		}
 	}
 	
-	
-//	@Test
-	public void closeMimic() {
-		
-//		This test passed
-		
-		MimicGuiSelenium driver = new MimicGuiSelenium();
-		driver.openURL(host+"KillMimic"); 
-		Assert.assertEquals("OK", driver.getValue());
+	@After
+	public void teardown() {
 		driver.quitSelenium();
-	}	
+	}
+
 }

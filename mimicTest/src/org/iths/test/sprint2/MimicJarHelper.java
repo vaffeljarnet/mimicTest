@@ -9,20 +9,29 @@ import org.iths.main.HttpServiceCaller;
 public class MimicJarHelper {
 
 	private HttpServiceCaller service;
+	private final static String host="http://localhost:8080/"; 
 	
-	public boolean jarRunning() {
+	public boolean jarIsRunning() {
 		service = new HttpServiceCaller();
-		if(!service.executeGetRequest("localhost:8080").equals("Error")) {
+		if(!service.executeGetRequest(host).equals("Error")) {
+			resetMimic();
 			return true;
-		}else if(service.executeGetRequest("localhost:8080").equals("Error")){
-			startMimicJar();
+		}else if(service.executeGetRequest(host).equals("Error")) {
+			startMimic();
 			return true;
 		}else {
 			return false;
 		}
 	}
 	
-	public void startMimicJar() {
+	public void resetMimic() {
+		killMimic();
+		wait(100);
+		startMimic();
+		wait(100);
+	}
+	
+	public void startMimic() {
 		try {
 			Desktop.getDesktop().open(new File("commonFiles\\runnableJars\\releaseSprint2\\mimic.jar"));
 		} catch (IOException e) {
@@ -30,9 +39,21 @@ public class MimicJarHelper {
 		}
 	}
 	
-	public void resetMimic() {
+	public void killMimic() {
 		service = new HttpServiceCaller();
-		service.executeGetRequest("localhost:8080/killMimic");
-		startMimicJar();
+		service.executeGetRequest("http://localhost:8080/KillMimic");
+		wait(100);
+	}
+	
+	public String errorString() {
+		return "Please start mimic.jar manually before running tests again. Location in repository: \\commonFiles\\runnableJars\\releaseSprint2\\mimic.jar";
+	}
+	
+	public void wait(int milliseconds) {
+		try {
+			Thread.sleep(milliseconds);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }
