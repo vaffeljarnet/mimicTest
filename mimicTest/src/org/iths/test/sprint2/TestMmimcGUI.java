@@ -3,8 +3,10 @@ package org.iths.test.sprint2;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SeleniumWorkingTest {
-
+public class TestMmimcGUI {
+	
+	String host = "http://localhost:8080/";
+	
 //	@Test
 	public void learnReqResp() {
 		
@@ -12,7 +14,7 @@ public class SeleniumWorkingTest {
 //		maybe put unlearn in the last steps in the testcase?
 		
 		TestSelenium driver = new TestSelenium();
-		driver.openURL("http://localhost:8080/2+2"); 
+		driver.openURL(host+"2+2"); 
 		driver.sendText("4");
 		driver.clickLearn();
 		driver.openURL("http://localhost:8080/2+2");
