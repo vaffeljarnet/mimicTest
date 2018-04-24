@@ -14,7 +14,7 @@ public class TestMimcGUI {
 //		maybe put unlearn in the last steps in the testcase?
 		
 		MimicGuiSelenium driver = new MimicGuiSelenium();
-		driver.openURL(host+"2+2"); 
+		driver.openURL(host+"2+2");
 		driver.sendText("4");
 		driver.clickLearn();
 		driver.openURL(host+"2+2");
