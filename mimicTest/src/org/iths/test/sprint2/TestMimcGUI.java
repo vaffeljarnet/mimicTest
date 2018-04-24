@@ -6,6 +6,7 @@ import org.junit.Test;
 public class TestMimcGUI {
 	
 	String host = "http://localhost:8080/";
+	String request;
 	
 //	@Test
 	public void learnReqResp() {
@@ -14,7 +15,8 @@ public class TestMimcGUI {
 //		maybe put unlearn in the last steps in the testcase?
 		
 		TestSelenium driver = new TestSelenium();
-		driver.openURL(host+"2+2"); 
+		request = "2+2";
+		driver.openURL(host+request); 
 		driver.sendText("4");
 		driver.clickLearn();
 		driver.openURL("http://localhost:8080/2+2");
