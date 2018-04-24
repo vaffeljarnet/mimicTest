@@ -101,6 +101,27 @@ public class TestMimcGUI {
 		}
 	}
 	
+	/**
+	 * Stores a request with xml format using the response
+	 * form and checks that the request has been identified 
+	 * as xml.
+	 */
+	@Test
+	public void TestMimicGUI115storeXmlRequest() {
+		if(helper.jarIsRunning()) {
+
+			driver = new MimicGuiSelenium();
+			driver.openURL(host+"xml"); 
+			driver.sendText("<value>1</value>");
+			driver.clickLearn();
+			driver.openURL(host+"xml"); 
+			Assert.assertTrue(driver.getValue().contains("This XML file"));
+
+		}else {
+			fail(helper.errorString());
+		}
+	}
+	
 	@After
 	public void teardown() {
 		driver.quitSelenium();
