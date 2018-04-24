@@ -14,6 +14,7 @@ public class TestMimicService {
 
 	private final static String host="http://localhost:8080/"; 
 	private HttpServiceCaller service;
+	private MimicJarHelper helper = new MimicJarHelper(); 
 	private String responseForm = "Paste or type json, xml, html or text response to learn and press Learn<br><br><form action=\"learn\" method=\"post\"><textarea name='text' rows='30' cols='150'></textarea><br><br><input type=\"submit\" id='learn' value=\"Learn\"></form>";
 	private String error = "Please start mimic.jar manually before running tests again. Location: \\commonFiles\\runnableJars\\releaseSprint2\\mimic.jar";
 	/**
@@ -22,14 +23,12 @@ public class TestMimicService {
 	 */
 	@Test
 	public void TestMimicService111learnResponse() {
-		if(isJarRunning()) {
+		if(helper.jarRunning()) {
 		service = new HttpServiceCaller();
 		service.executeGetRequest(host + "LearnNextResponse?text=2");
 		service.executeGetRequest(host + "1+1"); 
-		Assert.assertEquals("2", service.executeGetRequest(host + "1+1"));
-		
-		//Resets Mimic to intial state  
-		service.executeGetRequest(host +"unlearn");
+		Assert.assertEquals("2", service.executeGetRequest(host + "1+1"));		
+		helper.resetMimic();
 		}else {
 			fail(error);
 		}
@@ -40,12 +39,13 @@ public class TestMimicService {
 	 */
 	@Test
 	public void TestMimicService112unlearnResponse() {
-		if(isJarRunning()) {
+		if(helper.jarRunning()) {
 		service = new HttpServiceCaller();
 		service.executeGetRequest(host + "LearnNextResponse?text=4");
 		service.executeGetRequest(host + "2+2");
 		service.executeGetRequest(host +"unlearn");
 		Assert.assertEquals(responseForm, service.executeGetRequest(host+"2+2"));
+		helper.resetMimic();
 		}else {
 			fail(error);
 		}
@@ -58,7 +58,7 @@ public class TestMimicService {
 	 */
 	@Test
 	public void TestMimicService113unlearnSpecificResponse() {
-		if(isJarRunning()) {
+		if(helper.jarRunning()) {
 		service = new HttpServiceCaller();
 		
 		//Store request #1
@@ -85,11 +85,7 @@ public class TestMimicService {
 		Assert.assertEquals("2", service.executeGetRequest(host+"1+1"));
 		Assert.assertEquals("6", service.executeGetRequest(host+"3+3"));
 		
-		//Resets Mimic to intial state
-		service.executeGetRequest(host + "1+1");
-		service.executeGetRequest(host +"unlearn");
-		service.executeGetRequest(host + "3+3");
-		service.executeGetRequest(host +"unlearn");
+		helper.resetMimic();
 		}else {
 			fail(error);
 		}
@@ -103,7 +99,7 @@ public class TestMimicService {
 	 */
 	@Test
 	public void TestMimicService114changeResponse() {
-		if(isJarRunning()) {
+		if(helper.jarRunning()) {
 		service = new HttpServiceCaller();
 		
 		//Store a request with wrong answer
@@ -117,8 +113,7 @@ public class TestMimicService {
 		//Check that the request is giving the correct response
 		Assert.assertEquals("4", service.executeGetRequest(host + "2+2"));
 		
-		//Resets Mimic to intial state  
-		service.executeGetRequest(host +"unlearn");
+		helper.resetMimic();
 		}else {
 			fail(error);
 		}
@@ -131,13 +126,11 @@ public class TestMimicService {
 	 */
 	@Test
 	public void TestMimicService115closeMimic() {
-		if(isJarRunning()) {
+		if(helper.jarRunning()) {
 		service = new HttpServiceCaller();
-		service.executeGetRequest(host + "KillMimic");
+		service.executeGetRequest(host+"KillMimic");
 		Assert.assertEquals("Error",service.executeGetRequest(host));
-		
-		//Resets Mimic to intial state
-		startMimicJar();
+		helper.resetMimic();
 		}else {
 			fail(error);
 		}
@@ -145,26 +138,4 @@ public class TestMimicService {
 		
 	}
 	
-	//Below are help methods for checking if the mimic.jar is running
-	//and starting it if it isn't.
-	
-	private boolean isJarRunning() {
-		service = new HttpServiceCaller();
-		if(!service.executeGetRequest(host).equals("Error")) {
-			return true;
-		}else if(service.executeGetRequest(host).equals("Error")){
-			startMimicJar();
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	private void startMimicJar() {
-		try {
-			Desktop.getDesktop().open(new File("commonFiles\\runnableJars\\releaseSprint2\\mimic.jar"));
-		} catch (IOException e) {
-			System.err.println("Please start mimic.jar manually before running tests again. Location: \\commonFiles\\runnableJars\\releaseSprint2\\mimic.jar");
-		}
-	}
 }

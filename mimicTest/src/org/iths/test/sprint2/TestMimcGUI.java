@@ -10,9 +10,6 @@ public class TestMimcGUI {
     @Test
 	public void TestMimicGUI111learnReqResp() {
 		
-//		this test passed, need to "unlearn" first if this is to be run more than one time
-//		maybe put unlearn in the last steps in the testcase?
-		
 		MimicGuiSelenium driver = new MimicGuiSelenium();
 		driver.openURL(host+"2+2");
 		driver.sendText("4");
@@ -25,8 +22,6 @@ public class TestMimcGUI {
 
 	@Test
 	public void TestMimicGUI112changeResp() {
-		
-//		This I need help with
 		
 		MimicGuiSelenium driver = new MimicGuiSelenium();
 		driver.openURL(host+"1+1"); 
@@ -43,9 +38,7 @@ public class TestMimcGUI {
 	
 	@Test
 	public void TestMimicGUI113unlearnWithoutRequest() {
-		
-//		shows "nothing to unlearn" if you don't add line 46?!
-		
+
 		MimicGuiSelenium driver = new MimicGuiSelenium();
 		driver.openURL(host+"5+5"); 
 		driver.sendText("10");
@@ -59,8 +52,6 @@ public class TestMimcGUI {
 	
 	@Test
 	public void TestMimicGUI114unlearnWithRequest() {
-		
-//		shows "nothing to unlearn" if you don't add line 46?!
 		
 		MimicGuiSelenium driver = new MimicGuiSelenium();
 		driver.openURL(host+"5+5"); 
