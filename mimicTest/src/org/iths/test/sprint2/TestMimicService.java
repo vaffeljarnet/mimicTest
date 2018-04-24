@@ -9,7 +9,7 @@ public class TestMimicService {
 	private final static String host="http://localhost:8080/"; 
 	private HttpServiceCaller service;
 	
-//	@Test
+	@Test
 	public void learnResponse() {
 		service = new HttpServiceCaller();
 		service.executeGetRequest(host + "LearnNextResponse?text=2");
