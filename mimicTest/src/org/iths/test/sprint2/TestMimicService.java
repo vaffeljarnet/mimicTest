@@ -19,7 +19,9 @@ public class TestMimicService {
 
 //	@Test
 	public void unlearnResponse() {
-//		help!
+		service = new HttpServiceCaller();
+		service.executeGetRequest(host + "LearnNextResponse?text=4");
+		service.executeGetRequest(host + "2+2");
 	}
 	
 //	@Test
