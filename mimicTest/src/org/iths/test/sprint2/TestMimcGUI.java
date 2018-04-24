@@ -58,7 +58,7 @@ public class TestMimcGUI {
 		
 //		shows "nothing to unlearn"
 		
-		TestSelenium driver = new TestSelenium();
+		TestSelenium driver = new TestSelenium(); 
 		driver.openURL(host+"10+10"); 
 		driver.sendText("20");
 		driver.clickLearn();
