@@ -58,7 +58,7 @@ public class TestMimcGUI {
 	}
 	
 	@Test
-	public void unlearnWithRequest() {
+	public void TestMimicGUI114unlearnWithRequest() {
 		
 //		shows "nothing to unlearn" if you don't add line 46?!
 		
