@@ -10,7 +10,7 @@ public class TestMimicService {
 	private HttpServiceCaller service;
 	
 	@Test
-	public void learnResponse() {
+	public void TestMimicService111learnResponse() {
 		service = new HttpServiceCaller();
 		service.executeGetRequest(host + "LearnNextResponse?text=2");
 		String response = service.executeGetRequest(host + "1+1");
