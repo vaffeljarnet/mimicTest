@@ -3,7 +3,7 @@ package org.iths.test.sprint2;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestMmimcGUI {
+public class TestMimcGUI {
 	
 	String host = "http://localhost:8080/";
 	
