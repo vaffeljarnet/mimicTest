@@ -22,7 +22,7 @@ public class TestMimcGUI {
 		driver.quitSelenium();
 	}	
 
-//	@Test
+	@Test
 	public void changeResp() {
 		
 //		This I need help with
