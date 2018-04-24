@@ -22,7 +22,7 @@ public class TestMimcGUI {
 		driver.quitSelenium();
 	}	
 
-	@Test
+//	@Test
 	public void changeResp() {
 		
 //		This I need help with
@@ -37,7 +37,7 @@ public class TestMimcGUI {
 		driver.quitSelenium();
 	}	
 	
-	@Test
+//	@Test
 	public void unlearn() {
 		
 //		shows "nothing to unlearn" if you don't add line 46?!
@@ -51,6 +51,22 @@ public class TestMimcGUI {
 		Assert.assertEquals("OK", driver.getValue());
 		driver.quitSelenium();
 	}
+	
+	
+	@Test
+	public void unlearnIssue() {
+		
+//		shows "nothing to unlearn"
+		
+		TestSelenium driver = new TestSelenium();
+		driver.openURL(host+"10+10"); 
+		driver.sendText("20");
+		driver.clickLearn();
+		driver.openURL(host+"unlearn");
+		Assert.assertEquals("OK", driver.getValue());
+		driver.quitSelenium();
+	}
+	
 	
 //	@Test
 	public void closeMimic() {
