@@ -9,6 +9,7 @@ public class SeleniumWorkingTest {
 	public void learnReqResp() {
 		
 //		this test passed, need to "unlearn" first if this is to be run more than one time
+//		maybe put unlearn in the last steps in the testcase?
 		
 		TestSelenium driver = new TestSelenium();
 		driver.openURL("http://localhost:8080/2+2"); 
@@ -36,19 +37,19 @@ public class SeleniumWorkingTest {
 //	@Test
 	public void unlearn() {
 		
-//		shows "nothing to unlearn"?!
+//		shows "nothing to unlearn" if you don't add line 46?!
 		
 		TestSelenium driver = new TestSelenium();
 		driver.openURL("http://localhost:8080/5+5"); 
 		driver.sendText("10");
 		driver.clickLearn();
-		driver.delay(2000);
+		driver.openURL("http://localhost:8080/5+5");
 		driver.openURL("http://localhost:8080/unlearn");
 		Assert.assertEquals("OK", driver.getValue());
 		driver.quitSelenium();
 	}
 	
-	@Test
+//	@Test
 	public void closeMimic() {
 		
 //		This test passed
