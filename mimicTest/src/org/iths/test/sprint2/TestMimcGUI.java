@@ -66,7 +66,7 @@ public class TestMimcGUI {
 		driver.openURL(host+"5+5"); 
 		driver.sendText("10");
 		driver.clickLearn();
-		driver.openURL("http://localhost:8080/5+5");
+		driver.openURL(host+"5+5"); 
 		driver.openURL(host+"unlearn");
 		Assert.assertEquals("OK", driver.getValue());
 		driver.quitSelenium();
