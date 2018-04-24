@@ -8,7 +8,7 @@ public class TestMimcGUI {
 	String host = "http://localhost:8080/";
 	
     @Test
-	public void learnReqResp() {
+	public void TestMimicGUI111learnReqResp() {
 		
 //		this test passed, need to "unlearn" first if this is to be run more than one time
 //		maybe put unlearn in the last steps in the testcase?
@@ -23,7 +23,7 @@ public class TestMimcGUI {
 	}	
 
 	@Test
-	public void changeResp() {
+	public void TestMimicGUI112changeResp() {
 		
 //		This I need help with
 		
@@ -38,7 +38,7 @@ public class TestMimcGUI {
 	}	
 	
 	@Test
-	public void unlearnWithoutRequest() {
+	public void TestMimicGUI113unlearnWithoutRequest() {
 		
 //		shows "nothing to unlearn" if you don't add line 46?!
 		
@@ -48,7 +48,7 @@ public class TestMimcGUI {
 		driver.clickLearn();
 		driver.openURL(host+"unlearn");
 		Assert.assertEquals("OK", driver.getValue());
-		driver.quitSelenium();
+		//driver.quitSelenium();
 	}
 	
 	@Test
