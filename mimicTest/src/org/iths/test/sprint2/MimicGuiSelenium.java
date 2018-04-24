@@ -7,12 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TestSelenium {
+public class MimicGuiSelenium {
 
 	
 	private WebDriver webdriver;
 
-	public TestSelenium() {
+	public MimicGuiSelenium() {
 		System.setProperty("webdriver.chrome.driver", "commonFiles/chromedrive/chromedriver.exe");
 		webdriver = new ChromeDriver();
 		webdriver.manage().window().maximize();

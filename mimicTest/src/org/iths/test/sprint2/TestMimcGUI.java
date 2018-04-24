@@ -13,7 +13,7 @@ public class TestMimcGUI {
 //		this test passed, need to "unlearn" first if this is to be run more than one time
 //		maybe put unlearn in the last steps in the testcase?
 		
-		TestSelenium driver = new TestSelenium();
+		MimicGuiSelenium driver = new MimicGuiSelenium();
 		driver.openURL(host+"2+2"); 
 		driver.sendText("4");
 		driver.clickLearn();
@@ -27,7 +27,7 @@ public class TestMimcGUI {
 		
 //		This I need help with
 		
-		TestSelenium driver = new TestSelenium();
+		MimicGuiSelenium driver = new MimicGuiSelenium();
 		driver.openURL(host+"1+1"); 
 		driver.sendText("3");
 		driver.clickLearn();
@@ -38,15 +38,29 @@ public class TestMimcGUI {
 	}	
 	
 	@Test
-	public void unlearn() {
+	public void unlearnWithoutRequest() {
 		
 //		shows "nothing to unlearn" if you don't add line 46?!
 		
-		TestSelenium driver = new TestSelenium();
+		MimicGuiSelenium driver = new MimicGuiSelenium();
 		driver.openURL(host+"5+5"); 
 		driver.sendText("10");
 		driver.clickLearn();
-		//driver.openURL("http://localhost:8080/5+5");
+		driver.openURL(host+"unlearn");
+		Assert.assertEquals("OK", driver.getValue());
+		driver.quitSelenium();
+	}
+	
+	@Test
+	public void unlearnWithRequest() {
+		
+//		shows "nothing to unlearn" if you don't add line 46?!
+		
+		MimicGuiSelenium driver = new MimicGuiSelenium();
+		driver.openURL(host+"5+5"); 
+		driver.sendText("10");
+		driver.clickLearn();
+		driver.openURL("http://localhost:8080/5+5");
 		driver.openURL(host+"unlearn");
 		Assert.assertEquals("OK", driver.getValue());
 		driver.quitSelenium();
@@ -57,7 +71,7 @@ public class TestMimcGUI {
 		
 //		This test passed
 		
-		TestSelenium driver = new TestSelenium();
+		MimicGuiSelenium driver = new MimicGuiSelenium();
 		driver.openURL(host+"KillMimic"); 
 		Assert.assertEquals("OK", driver.getValue());
 		driver.quitSelenium();

@@ -4,7 +4,7 @@ import org.iths.main.HttpServiceCaller;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestMimicJar {
+public class TestMimicService {
 
 	private final static String host="http://localhost:8080/"; 
 	private HttpServiceCaller service;
