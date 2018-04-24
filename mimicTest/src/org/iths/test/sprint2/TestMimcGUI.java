@@ -17,8 +17,9 @@ public class TestMimcGUI {
 		driver.openURL(host+"2+2"); 
 		driver.sendText("4");
 		driver.clickLearn();
-		driver.openURL("http://localhost:8080/2+2");
+		driver.openURL(host+"2+2");
 		Assert.assertEquals("4", driver.getValue());
+		driver.openURL(host+"unlearn");
 		driver.quitSelenium();
 	}	
 
@@ -31,9 +32,12 @@ public class TestMimcGUI {
 		driver.openURL(host+"1+1"); 
 		driver.sendText("3");
 		driver.clickLearn();
+		driver.openURL(host+"1+1");
+		Assert.assertEquals("3", driver.getValue());
 		driver.openURL(host+"LearnNextResponse?text=2");
 		driver.openURL(host+"1+1");
 		Assert.assertEquals("2", driver.getValue());
+		driver.openURL(host+"unlearn");
 		driver.quitSelenium();
 	}	
 	
@@ -48,7 +52,9 @@ public class TestMimcGUI {
 		driver.clickLearn();
 		driver.openURL(host+"unlearn");
 		Assert.assertEquals("OK", driver.getValue());
-		//driver.quitSelenium();
+		driver.openURL(host+"5+5"); 
+		driver.openURL(host+"unlearn");
+		driver.quitSelenium();
 	}
 	
 	@Test
@@ -61,21 +67,6 @@ public class TestMimcGUI {
 		driver.sendText("10");
 		driver.clickLearn();
 		driver.openURL("http://localhost:8080/5+5");
-		driver.openURL(host+"unlearn");
-		Assert.assertEquals("OK", driver.getValue());
-		driver.quitSelenium();
-	}
-	
-	
-	@Test
-	public void unlearnIssue() {
-		
-//		shows "nothing to unlearn"
-		
-		MimicGuiSelenium driver = new MimicGuiSelenium(); 
-		driver.openURL(host+"10+10"); 
-		driver.sendText("20");
-		driver.clickLearn();
 		driver.openURL(host+"unlearn");
 		Assert.assertEquals("OK", driver.getValue());
 		driver.quitSelenium();
