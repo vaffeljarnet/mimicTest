@@ -73,7 +73,7 @@ public class TestMimcGUI {
 	}
 	
 	
-//	@Test
+	@Test
 	public void closeMimic() {
 		
 //		This test passed

@@ -27,7 +27,7 @@ public class MimicGuiSelenium {
 		WebElement element = webdriver.findElement(By.xpath("/html/body/form/textarea"));
 		element.click();
 		delay(2000);
-		element.sendKeys(text);
+		element.sendKeys(text);	
 	}
 	
 	public void clickLearn() {
