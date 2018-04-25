@@ -138,23 +138,5 @@ public class TestMimicService {
 			fail(helper.errorString());
 		}
 	}
-	
-	/**
-	 * Stores a request with xml format and checks that 
-	 * the request has been identified as xml.
-	 */
-	@Test
-	public void TestMimicGUI115storeXmlRequest() {
-		if(helper.jarIsRunning()) {
-
-			service = new HttpServiceCaller();			
-			service.executeGetRequest(host+"LearnNextResponse?text=<value>1</value>&mime=application/xml");
-			System.out.print(service.executeGetRequest(host+"xml"));
-			Assert.assertTrue(service.executeGetRequest(host+"xml").toUpperCase().contains("XML"));
-
-		}else {
-			fail(helper.errorString());
-		}
-	}
 
 }
