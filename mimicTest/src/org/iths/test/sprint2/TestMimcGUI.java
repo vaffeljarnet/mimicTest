@@ -121,4 +121,9 @@ public class TestMimcGUI {
 			fail(helper.errorString());
 		}
 	}
+	
+	@After
+	public void teardown() {
+		driver.quitSelenium();
+	}
 }
