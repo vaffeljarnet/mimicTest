@@ -31,7 +31,7 @@ public class MimicJarHelper {
 	
 	public void startMimic() {
 		try {
-			Desktop.getDesktop().open(new File("commonFiles\\runnableJars\\releaseSprint2\\mimic.jar"));
+			Desktop.getDesktop().open(new File("commonFiles\\runnableJars\\currentRelease\\mimic.jar"));
 		} catch (IOException e) {
 			System.err.println("Please start mimic.jar manually before running tests again. Location in repository: \\commonFiles\\runnableJars\\releaseSprint2\\mimic.jar");
 		}
