@@ -2,6 +2,8 @@ package org.iths.test.sprint2;
 
 import static org.junit.Assert.fail;
 
+import org.iths.main.MimicGuiSelenium;
+import org.iths.main.MimicJarHelper;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;

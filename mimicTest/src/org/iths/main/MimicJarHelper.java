@@ -1,10 +1,8 @@
-package org.iths.test.sprint2;
+package org.iths.main;
 
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-
-import org.iths.main.HttpServiceCaller;
 
 public class MimicJarHelper {
 

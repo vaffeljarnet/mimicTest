@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.iths.main.HttpServiceCaller;
+import org.iths.main.MimicJarHelper;
 import org.junit.Assert;
 import org.junit.Test;
 

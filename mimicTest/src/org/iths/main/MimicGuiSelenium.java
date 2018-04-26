@@ -1,4 +1,4 @@
-package org.iths.test.sprint2;
+package org.iths.main;
 
 import java.util.concurrent.TimeUnit;
 
