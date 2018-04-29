@@ -21,6 +21,10 @@ public class MimicStepDef {
 		service.executeGetRequest(host + "LearnNextResponse?text=2");
 		service.executeGetRequest(host + "1+1"); 
 		Assert.assertEquals("2", service.executeGetRequest(host + "1+1"));
+		
+		service.executeGetRequest(host + "LearnNextResponse?text=3");
+		service.executeGetRequest(host + "2+1"); 
+		Assert.assertEquals("3", service.executeGetRequest(host + "2+1"));
 	    
 	}
 
@@ -35,4 +39,16 @@ public class MimicStepDef {
 		Assert.assertNotEquals("2", service.executeGetRequest(host+"1+1"));
 	   
 	}
+	
+	@Given("^that no requests are stored$")
+	public void that_no_requests_are_stored() throws Throwable {
+	   //Mimic is empty when started
+	    
+	}
+
+	@Then("^the mock shows error message$")
+	public void the_mock_shows_error_message() throws Throwable {
+	   
+	}
+
 }

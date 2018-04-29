@@ -8,6 +8,10 @@ Feature: Test the Mimic functions
     When I write unlearnAll in url
     Then the mock unlearns all responses 
 
+Scenario: Unlearn all with no requests stored
+ Given that no requests are stored
+ When I write unlearnAll in url
+ Then the mock shows error message
 
    
    # Examples: 
