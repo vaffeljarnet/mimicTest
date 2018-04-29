@@ -1,6 +1,7 @@
 package org.iths.test.sprint3;
 
 import org.iths.main.HttpServiceCaller;
+import org.iths.main.MimicGuiSelenium;
 import org.junit.Assert;
 
 import cucumber.api.PendingException;
@@ -11,10 +12,9 @@ import cucumber.api.java.en.When;
 public class MimicStepDef {
 	private final static String host="http://localhost:8080/"; 
 	private HttpServiceCaller service = new HttpServiceCaller();
+	private MimicGuiSelenium driver;
 	
-	public MimicStepDef() {
-		
-	}
+	
 	@Given("^that the mock has learned requests and responses$")
 	public void that_the_mock_has_learned_requests_and_responses() throws Throwable {
 	
