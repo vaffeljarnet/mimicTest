@@ -37,6 +37,7 @@ public class MimicStepDef {
 	@Then("^the mock unlearns all responses$")
 	public void the_mock_unlearns_all_responses() throws Throwable {
 		Assert.assertNotEquals("2", service.executeGetRequest(host+"1+1"));
+		Assert.assertNotEquals("3", service.executeGetRequest(host+"2+1"));
 	   
 	}
 	
@@ -48,7 +49,7 @@ public class MimicStepDef {
 
 	@Then("^the mock shows error message$")
 	public void the_mock_shows_error_message() throws Throwable {
-	   
+		Assert.assertEquals("Nothing to unlearn", service.executeGetRequest(host + "unlearnAll"));
 	}
 
 }
