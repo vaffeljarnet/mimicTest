@@ -1,17 +1,39 @@
-@tag
-Feature: Test how mock responds depending on the current state
 
-  @tag1
-  Scenario: Title of your scenario
-    Given that the mock has learned that <question> is <response>
-    And that <question2> is <response2>
-    And that <question3> is <response3>
-    When I call resetState 
-    Then it goes to the previous state
+Feature: As a Tester I would like the mock to learn how to respond differently depending 
+on the current state to simulate the internal state of the SUT
+
+
+  Scenario Outline: Unlearn question with multiple states
+    Given  that the mimicService is running
+    And that the mock has learned <questionOne> with <responseOne>
+    And that the mock has learned <questionOne> with <responseTwo>
+    And that the mock has learned <questionOne> with <responseThree>
+    When I call unlearn for <questionOne>
+    Then the mock unlearns <questionOne>
    
-
-
-
+   Scenario Outline: Unlearn question with one state
+    Given  that the mimicService is running
+    And that the mock has learned <questionOne> with <responseOne>
+    When I call unlearn for <questionOne>
+    Then the mock unlearns <questionOne> 
+  
+  Scenario Outline: Step one state back
+    Given  that the mimicService is running
+    And that the mock has learned <questionOne> with <responseOne>
+    And that the mock has learned <questionOne> with <responseTwo>
+    And that the mock has learned <questionOne> with <responseThree>
+    When I call stepBack for <questionOne>
+    Then <questionOne> respondes with <responseTwo>
     
-      | question| response | question2  | response2 | question3 |resopnse3| 
-      | "1+1"   |     "2"  |   "2+2"    | "4"       | "3+3"     | "6"     |
+   Scenario Outline: Set new state for request
+    Given  that the mimicService is running
+    And that the mock has learned <questionOne> with <responseOne>
+    When I teach the mock that <questionOne> has response <responseTwo>
+    When I teach the mock that <questionOne> has response <responseThree>
+    Then <questionOne> respondes with <responseThree>
+
+
+
+    Examples:
+      | questionOne| responseOne | responseTwo |responseThree| 
+      | "1+1"      |     "2"     | "4"         |   "6"       |

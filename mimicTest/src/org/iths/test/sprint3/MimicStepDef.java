@@ -25,20 +25,6 @@ public class MimicStepDef {
 	   }
 		service.executeGetRequest(host + "unlearnAll");	
 	}
-
-	
-	@Given("^that the mock has learned requests and responses$")
-	public void that_the_mock_has_learned_requests_and_responses() throws Throwable {
-	    service.executeGetRequest(host + "unlearnAll");
-		service.executeGetRequest(host + "LearnNextResponse?text=2");
-		service.executeGetRequest(host + "1+1"); 
-		Assert.assertEquals("2", service.executeGetRequest(host + "1+1"));
-		
-		service.executeGetRequest(host + "LearnNextResponse?text=3");
-		service.executeGetRequest(host + "2+1"); 
-		Assert.assertEquals("3", service.executeGetRequest(host + "2+1"));
-	    
-	}
 	
 	@Given("^that the mock has learned \"([^\"]*)\" with \"([^\"]*)\"$")
 	public void that_the_mock_has_learned_questionOne_with_responseOne(String arg1, String arg2) throws Throwable {
@@ -57,14 +43,6 @@ public class MimicStepDef {
 	  service.executeGetRequest(host + "unlearnAll");
 	
 	}
-
-	@Then("^the mock unlearns all responses$")
-	public void the_mock_unlearns_all_responses() throws Throwable {
-		Assert.assertEquals(responseForm, service.executeGetRequest(host+"1+1"));
-		Assert.assertEquals(responseForm, service.executeGetRequest(host+"2+2"));
-		
-	   
-	}
 	
 	@Given("^that no requests are stored$")
 	public void that_no_requests_are_stored() throws Throwable {
@@ -75,6 +53,18 @@ public class MimicStepDef {
 	@Then("^the mock shows error message$")
 	public void the_mock_shows_error_message() throws Throwable {
 		Assert.assertEquals("Nothing to unlearn", service.executeGetRequest(host + "unlearnAll"));
+	}
+	
+	@When("^I teach the mock that \"([^\"]*)\" has response \"([^\"]*)\"$")
+	public void i_teach_the_mock_that_has_response(String arg1, String arg2) throws Throwable {
+		service.executeGetRequest(host + "LearnNextResponse?text="+arg2);
+		service.executeGetRequest(host + arg1); 
+		Assert.assertEquals(arg2, service.executeGetRequest(host + arg1));
+	}
+	
+	@Then("^\"([^\"]*)\" respondes with \"([^\"]*)\"$")
+	public void respondes_with(String arg1, String arg2) throws Throwable {
+		Assert.assertEquals(arg2, service.executeGetRequest(host + arg1));
 	}
 
 }
