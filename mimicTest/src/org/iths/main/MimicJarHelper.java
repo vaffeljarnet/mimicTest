@@ -23,9 +23,8 @@ public class MimicJarHelper {
 	}
 	
 	public void resetMimic() {
-		killMimic();
-		wait(100);
-		startMimic();
+		service = new HttpServiceCaller();
+		service.executeGetRequest(host+"unlearnAll");
 		wait(100);
 	}
 	
