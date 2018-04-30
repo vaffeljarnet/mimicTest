@@ -16,6 +16,7 @@ public class MimicJarHelper {
 			return true;
 		}else if(service.executeGetRequest(host).equals("Error")) {
 			startMimic();
+			resetMimic();
 			return true;
 		}else {
 			return false;
