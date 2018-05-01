@@ -1,10 +1,15 @@
 package org.iths.test.sprint3;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import org.iths.main.HttpServiceCaller;
 import org.iths.main.MimicGuiSelenium;
 import org.iths.main.MimicJarHelper;
 import org.junit.Assert;
 
+import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -14,9 +19,8 @@ public class MimicStepDef {
 	private final static String host="http://localhost:8080/"; 
 	private HttpServiceCaller service = new HttpServiceCaller();
 	private MimicGuiSelenium driver;
-	private String responseForm = "Paste or type json, xml, html or text response to learn and press Learn<br><br><form action=\"learn\" method=\"post\"><textarea name='text' rows='30' cols='150'></textarea><br><br><input type=\"submit\" id='learn' value=\"Learn\"></form>";
-	
-	MimicJarHelper helper = new MimicJarHelper();
+	private String responseForm = "Paste or type json, xml, html or text response to learn and press Learn<br><br><form action=\"learn\" method=\"post\"><textarea name='text' rows='30' cols='150'></textarea><br><br><input type=\"submit\" id='learn' value=\"Learn\"></form>";	
+	private MimicJarHelper helper = new MimicJarHelper();
 	
 	@Given("^that the mimicService is running$")
 	public void that_the_mimicService_is_running() throws Throwable {
@@ -32,6 +36,7 @@ public class MimicStepDef {
 		service.executeGetRequest(host + arg1); 
 		Assert.assertEquals(arg2, service.executeGetRequest(host + arg1));
 	}
+	
 	@When("^I call resetState for \"([^\"]*)\"$")
 	public void i_call_resetState_for(String arg1) throws Throwable {
 		service.executeGetRequest(host+"resetState");
@@ -97,8 +102,29 @@ public class MimicStepDef {
 	    Assert.assertTrue(service.getMimeType(host+arg1).contains(arg2));
 	}
 	
+	@When("^I terminate the mimicService$")
+	public void i_terminate_mimicService() throws Throwable {
+	    helper.killMimic();
+	}
+
+	@When("^I start mimicService$")
+	public void i_start_mimicService() throws Throwable {
+	    helper.startMimic();
+	}
 	
+	@When("^I teach the mock the bellow questions and responses$")
+	public void i_teach_the_mock_multiple_questions_with_responses(DataTable arg1) throws Throwable {
+		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
+				service.executeGetRequest(host + "LearnNextResponse?text="+examples.get("Response"));
+				service.executeGetRequest(host + examples.get("Question")); 
+			}
+	}
 
-
+	@Then("^every question bellow respondes with corresponding response$")
+	public void every_question_respondes_with_correct_response(DataTable arg1) throws Throwable {
+		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
+			Assert.assertEquals(examples.get("Response"), service.executeGetRequest(host + examples.get("Question"))); 
+		}
+	}
 
 }
