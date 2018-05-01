@@ -28,6 +28,11 @@ public class SeleniumStepDef {
 	    driver.quitSelenium();
 	}
 	
+	@When("^I open the relearn URL$")
+	public void i_use_the_relearn_function() throws Throwable {
+	    driver.openURL("localhost:8080/relearn");
+	}
+	
 }
 
 

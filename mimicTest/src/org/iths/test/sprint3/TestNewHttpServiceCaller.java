@@ -14,8 +14,12 @@ public class TestNewHttpServiceCaller {
 	private String host = "http://localhost:8080/";
 	private MimicJarHelper helper = new MimicJarHelper();
 
+	/**
+	 * Test that new HttpServiceCaller can make get request 
+	 * and that text mime type is stored in Mimic
+	 */
 	@Test
-	public void testTextMime() {
+	public void TestNewHttpServiceCaller111testTextMime() {
 		if(helper.jarIsRunning()) {
 			service.executeGetRequest(host+"learnNextResponse?text=TestTextMime&mime=application/text");
 			service.executeGetRequest(host+"TEXT");
@@ -26,8 +30,12 @@ public class TestNewHttpServiceCaller {
 		}
 	}
 
+	/**
+	 * Test that new HttpServiceCaller can make get request 
+	 * and that HTML mime type is stored in Mimic
+	 */
 	@Test
-	public void testHtmlMime() {
+	public void TestNewHttpServiceCaller112testHtmlMime() {
 		if(helper.jarIsRunning()) {
 			service.executeGetRequest(host+"learnNextResponse?text=TestHtmlMime&mime=application/html");
 			service.executeGetRequest(host+"HTML");
@@ -38,8 +46,12 @@ public class TestNewHttpServiceCaller {
 		}
 	}
 
+	/**
+	 * Test that new HttpServiceCaller can make get request 
+	 * and that JSON mime type is stored in Mimic
+	 */
 	@Test
-	public void testJsonMime() {
+	public void TestNewHttpServiceCaller113testJsonMime() {
 		if(helper.jarIsRunning()) {
 			service.executeGetRequest(host+"learnNextResponse?text=testJsonMime&mime=application/json");
 			service.executeGetRequest(host+"JSON");
@@ -50,8 +62,12 @@ public class TestNewHttpServiceCaller {
 		}
 	}
 
+	/**
+	 * Test that new HttpServiceCaller can make get request 
+	 * and that XML mime type is stored in Mimic
+	 */
 	@Test
-	public void testXmlMime() {
+	public void TestNewHttpServiceCaller114testXmlMime() {
 		if(helper.jarIsRunning()) {
 			service.executeGetRequest(host+"learnNextResponse?text=testXmlMime&mime=application/xml");
 			service.executeGetRequest(host+"XML");
