@@ -2,7 +2,7 @@
 Feature: As a Tester I would like the mock to learn how to respond differently depending 
 on the current state to simulate the internal state of the SUT
 
-
+@currentState111
   Scenario Outline: Unlearn question with multiple states
     Given  that the mimicService is running
     And that the mock has learned <questionOne> with <responseOne>
@@ -14,7 +14,8 @@ on the current state to simulate the internal state of the SUT
     Examples:
       | questionOne| responseOne | responseTwo |responseThree| 
       | "1+1"      |     "2"     | "4"         |   "6"       |
-      
+   
+ @currentState112     
    Scenario Outline: Unlearn question with one state
     Given  that the mimicService is running
     And that the mock has learned <questionOne> with <responseOne>
@@ -24,7 +25,8 @@ on the current state to simulate the internal state of the SUT
      Examples:
       | questionOne| responseOne | 
       | "1+1"      |     "2"     |         
-  
+ 
+ @currentState113 
   Scenario Outline: Step one state back
     Given  that the mimicService is running
     And that the mock has learned <questionOne> with <responseOne>
@@ -36,7 +38,9 @@ on the current state to simulate the internal state of the SUT
      Examples:
       | questionOne| responseOne | responseTwo |responseThree| 
       | "1+1"      |     "2"     | "4"         |   "6"       |
-    
+   
+   
+  @currentState114 
    Scenario Outline: Set new state for request
     Given  that the mimicService is running
     And that the mock has learned <questionOne> with <responseOne>
@@ -47,7 +51,9 @@ on the current state to simulate the internal state of the SUT
     Examples:
       | questionOne| responseOne | responseTwo |responseThree| 
       | "1+1"      |     "2"     | "4"         |   "6"       |
-      
+  
+  
+ @currentState115    
    Scenario Outline: Unlearn multiple states with same response
     Given  that the mimicService is running
     And that the mock has learned <questionOne> with <responseOne>

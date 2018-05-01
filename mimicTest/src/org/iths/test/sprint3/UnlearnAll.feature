@@ -1,8 +1,8 @@
 
-@tag
+
 Feature: Unlearn all responses so that I can rerun all the tests without restarting the service
 
-  @tag1
+@unlearAll111
   Scenario Outline: Unlearn all with two request
     Given that the mimicService is running
     And that the mock has learned <questionOne> with <responseOne>
@@ -14,7 +14,8 @@ Feature: Unlearn all responses so that I can rerun all the tests without restart
   Examples:
     | questionOne  | responseOne | questionTwo  | responseTwo |
     | "1+1"        |     "2"     |   "2+2"      |    "4"      |
-    
+ 
+ @unlearAll112   
   Scenario Outline: Unlearn all with one request
    Given that the mimicService is running
    And that the mock has learned <questionOne> with <responseOne>
@@ -25,6 +26,7 @@ Feature: Unlearn all responses so that I can rerun all the tests without restart
    | questionOne  | responseOne |
    | "1+1"        |     "2"     | 
 
+ @unlearAll113
 	Scenario: Unlearn all with no requests stored
  		Given that the mimicService is running
  		And that no requests are stored
