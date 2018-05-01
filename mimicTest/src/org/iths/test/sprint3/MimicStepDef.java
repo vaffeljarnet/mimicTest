@@ -32,6 +32,16 @@ public class MimicStepDef {
 		service.executeGetRequest(host + arg1); 
 		Assert.assertEquals(arg2, service.executeGetRequest(host + arg1));
 	}
+	@When("^I call resetState for \"([^\"]*)\"$")
+	public void i_call_resetState_for(String arg1) throws Throwable {
+		service.executeGetRequest(host+"resetState");
+
+	}
+
+	@Then("^the \"([^\"]*)\" is displayed when \"([^\"]*)\" is called$")
+	public void the_is_displayed_when_is_called(String arg1, String arg2) throws Throwable {
+		Assert.assertEquals(arg1, service.executeGetRequest(host + arg2));
+	}
 
 	@Then("^the mock unlearns \"([^\"]*)\"$")
 	public void the_mock_unlearns_questionTwo(String arg1) throws Throwable {
@@ -86,5 +96,9 @@ public class MimicStepDef {
 	public void the_request_has_the_mime_type(String arg1, String arg2) throws Throwable {
 	    Assert.assertTrue(service.getMimeType(host+arg1).contains(arg2));
 	}
+	
+	
+
+
 
 }
