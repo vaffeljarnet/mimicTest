@@ -66,5 +66,15 @@ public class MimicStepDef {
 	public void respondes_with(String arg1, String arg2) throws Throwable {
 		Assert.assertEquals(arg2, service.executeGetRequest(host + arg1));
 	}
+	
+	@When("^I call unlearn for \"([^\"]*)\"$")
+	public void i_call_unlearn_for(String arg1) throws Throwable {
+	    service.executeGetRequest(host+"unlearn");
+	}
+	
+	@When("^I call stepBack for \"([^\"]*)\"$")
+	public void i_call_stepBack_for(String arg1) throws Throwable {
+	    service.executeGetRequest(host+"stepBack");
+	}
 
 }

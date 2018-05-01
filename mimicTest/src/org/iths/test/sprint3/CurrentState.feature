@@ -44,8 +44,19 @@ on the current state to simulate the internal state of the SUT
     When I teach the mock that <questionOne> has response <responseThree>
     Then <questionOne> respondes with <responseThree>
 
-
-
     Examples:
       | questionOne| responseOne | responseTwo |responseThree| 
       | "1+1"      |     "2"     | "4"         |   "6"       |
+      
+   Scenario Outline: Set multiple states with same response
+    Given  that the mimicService is running
+    And that the mock has learned <questionOne> with <responseOne>
+    And that the mock has learned <questionOne> with <responseTwo>
+    And that the mock has learned <questionOne> with <responseOne>
+    When I call unlearn for <questionOne>
+    And I call unlearn for <questionOne>
+    Then <questionOne> respondes with <responseOne>
+
+    Examples:
+      | questionOne| responseOne | responseTwo | 
+      | "1+1"      |     "2"     | "3"         |
