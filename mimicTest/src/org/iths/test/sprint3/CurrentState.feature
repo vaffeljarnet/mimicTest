@@ -48,7 +48,7 @@ on the current state to simulate the internal state of the SUT
       | questionOne| responseOne | responseTwo |responseThree| 
       | "1+1"      |     "2"     | "4"         |   "6"       |
       
-   Scenario Outline: Set multiple states with same response
+   Scenario Outline: Unlearn multiple states with same response
     Given  that the mimicService is running
     And that the mock has learned <questionOne> with <responseOne>
     And that the mock has learned <questionOne> with <responseTwo>
