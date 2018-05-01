@@ -76,5 +76,15 @@ public class MimicStepDef {
 	public void i_call_stepBack_for(String arg1) throws Throwable {
 	    service.executeGetRequest(host+"stepBack");
 	}
+	
+	@When("^I make the request \"([^\"]*)\"$")
+	public void i_make_the_request(String arg1) throws Throwable {
+		service.executeGetRequest(host+arg1);
+	}
+	
+	@Then("^the request \"([^\"]*)\" has the mime type \"([^\"]*)\"$")
+	public void the_request_has_the_mime_type(String arg1, String arg2) throws Throwable {
+	    Assert.assertTrue(service.getMimeType(host+arg1).contains(arg2));
+	}
 
 }
