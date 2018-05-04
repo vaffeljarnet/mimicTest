@@ -35,18 +35,7 @@ public class MimicStepDef {
 		service.executeGetRequest(host + "LearnNextResponse?text="+arg2);
 		service.executeGetRequest(host + arg1); 
 		Assert.assertEquals(arg2, service.executeGetRequest(host + arg1));
-	}
-	
-	@When("^I call resetState for \"([^\"]*)\"$")
-	public void i_call_resetState_for(String arg1) throws Throwable {
-		service.executeGetRequest(host+"resetState");
-
-	}
-
-	@Then("^the \"([^\"]*)\" is displayed when \"([^\"]*)\" is called$")
-	public void the_is_displayed_when_is_called(String arg1, String arg2) throws Throwable {
-		Assert.assertEquals(arg1, service.executeGetRequest(host + arg2));
-	}
+	}	
 
 	@Then("^the mock unlearns \"([^\"]*)\"$")
 	public void the_mock_unlearns_questionTwo(String arg1) throws Throwable {
@@ -82,14 +71,9 @@ public class MimicStepDef {
 		Assert.assertEquals(arg2, service.executeGetRequest(host + arg1));
 	}
 	
-	@When("^I call unlearn for \"([^\"]*)\"$")
-	public void i_call_unlearn_for(String arg1) throws Throwable {
+	@When("^I call unlearn")
+	public void i_call_unlearn() throws Throwable {
 	    service.executeGetRequest(host+"unlearn");
-	}
-	
-	@When("^I call stepBack for \"([^\"]*)\"$")
-	public void i_call_stepBack_for(String arg1) throws Throwable {
-	    service.executeGetRequest(host+"stepBack");
 	}
 	
 	@When("^I make the request \"([^\"]*)\"$")
@@ -123,24 +107,25 @@ public class MimicStepDef {
 	@Then("^every question bellow respondes with corresponding response$")
 	public void every_question_respondes_with_correct_response(DataTable arg1) throws Throwable {
 		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
-			Assert.assertEquals(examples.get("Response"), service.executeGetRequest(host + examples.get("Question"))); 
+			Assert.assertEquals(examples.get("response"), service.executeGetRequest(host + examples.get("question"))); 
 		}
-	}
-	
-	@When("^I add a state for \"([^\"]*)\" with \"([^\"]*)\"$")
-	public void i_add_a_state_for_with(String arg1, String arg2) throws Throwable {
-	    service.executeGetRequest(host+"LearnNextResponse?text="+arg2);
-	    service.executeGetRequest(host+arg1);
-	    Assert.assertEquals(arg2, service.executeGetRequest(host+arg1));
 	}
 
 	@When("^I call resetState$")
 	public void i_call_resetState() throws Throwable {
 	    service.executeGetRequest(host+"resetState");
-	    helper.wait(5000);
+	    helper.wait(500);
+	}
+	
+	@When("^I teach the mock the bellow sequense$")
+	public void i_teach_the_mock_the_bellow_sequense(DataTable arg1) throws Throwable {
+		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
+			service.executeGetRequest(host + "LearnNextResponse?text="+examples.get("response"));
+			service.executeGetRequest(host + examples.get("question")); 
+		}
 	}
 
-	@Then("^every step in the stored sequense respondes with the correct response as bellow$")
+	@Then("^every step in the stored sequense respondes with the stored response as bellow$")
 	public void every_step_in_the_stored_sequense_respondes_with_the_correct_response_as_bellow(DataTable arg1) throws Throwable {
 		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
 			Assert.assertEquals(examples.get("response"), service.executeGetRequest(host + examples.get("question"))); 
