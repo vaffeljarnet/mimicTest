@@ -24,25 +24,32 @@ on the current state to simulate the internal state of the SUT
     
      Examples:
       | questionOne| responseOne | 
-      | "1+1"      |     "2"     |         
- 
- @currentState113 
-  Scenario Outline: Step one state back
-    Given  that the mimicService is running
-    And that the mock has learned <questionOne> with <responseOne>
-    And that the mock has learned <questionOne> with <responseTwo>
-    And that the mock has learned <questionOne> with <responseThree>
-    When I call stepBack for <questionOne>
-    Then <questionOne> respondes with <responseTwo>
-    
-     Examples:
-      | questionOne| responseOne | responseTwo |responseThree| 
-      | "1+1"      |     "2"     | "4"         |   "6"       |
-   
+      | "1+1"      |     "2"     |      
+      
+@currentState113
+
+	Scenario Outline: Store sequense and check that all states are stored
+	  Given that the mimicService is running
+	  And that the mock has learned <questionOne> with <responseOne>
+	  When I teach the mock that <questionOne> has response <responseTwo>
+	  And I teach the mock that <questionOne> has response <responseThree>
+	  And I teach the mock that <questionOne> has response <responseFour>
+	  When I call resetState
+	  Then every step in the stored sequense respondes with the correct response as bellow
+	    |  question   |    response   |
+      |   "1+1"     |      "2"      |
+      |   "1+1"     |      "3"      |
+      |   "1+1"     |      "4"      |
+      |   "1+1"     |      "5"      |
+      
+      Examples:
+      | questionOne| responseOne | responseTwo| responseThree|responseFour|
+      |   "1+1"    |     "2"     |     "3"    |     "4"      |     "5"    |
+	  
    
   @currentState114 
    Scenario Outline: Set new state for request
-    Given  that the mimicService is running
+    Given that the mimicService is running
     And that the mock has learned <questionOne> with <responseOne>
     When I teach the mock that <questionOne> has response <responseTwo>
     When I teach the mock that <questionOne> has response <responseThree>
