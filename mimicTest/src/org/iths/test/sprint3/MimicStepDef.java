@@ -96,7 +96,7 @@ public class MimicStepDef {
 	    helper.startMimic();
 	}
 	
-	@When("^I teach the mock the bellow questions and responses$")
+	@When("^I teach the mock the below questions and responses$")
 	public void i_teach_the_mock_multiple_questions_with_responses(DataTable arg1) throws Throwable {
 		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
 				service.executeGetRequest(host + "LearnNextResponse?text="+examples.get("Response"));
@@ -104,7 +104,7 @@ public class MimicStepDef {
 			}
 	}
 
-	@Then("^every question bellow respondes with corresponding response$")
+	@Then("^every question below respondes with corresponding response$")
 	public void every_question_respondes_with_correct_response(DataTable arg1) throws Throwable {
 		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
 			Assert.assertEquals(examples.get("response"), service.executeGetRequest(host + examples.get("question"))); 
@@ -117,7 +117,7 @@ public class MimicStepDef {
 	    helper.wait(500);
 	}
 	
-	@When("^I teach the mock the bellow sequense$")
+	@When("^I teach the mock the below sequense$")
 	public void i_teach_the_mock_the_bellow_sequense(DataTable arg1) throws Throwable {
 		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
 			service.executeGetRequest(host + "LearnNextResponse?text="+examples.get("response"));
@@ -125,7 +125,7 @@ public class MimicStepDef {
 		}
 	}
 
-	@Then("^every step in the stored sequense respondes with the stored response as bellow$")
+	@Then("^every step in the stored sequense respondes with the stored response as below$")
 	public void every_step_in_the_stored_sequense_respondes_with_the_correct_response_as_bellow(DataTable arg1) throws Throwable {
 		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
 			Assert.assertEquals(examples.get("response"), service.executeGetRequest(host + examples.get("question"))); 

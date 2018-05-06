@@ -17,14 +17,14 @@ Feature: Request are stored in the Brain file when terminating mimicService
   Scenario: Store multiple requests and make same requests after reboot
     Given that the mimicService is running
     And that no requests are stored
-    When I teach the mock the bellow questions and responses
+    When I teach the mock the below questions and responses
       |  question   |    response   |
       |   "2+2"     |      "4"      |
       |   "3+3"     |      "6"      |
       |   "4+4"     |      "8"      |
     And I terminate the mimicService
     And I start mimicService
-    Then every question bellow respondes with corresponding response
+    Then every question below respondes with corresponding response
       |  question   |    response   |
       |   "2+2"     |      "4"      |
       |   "3+3"     |      "6"      |

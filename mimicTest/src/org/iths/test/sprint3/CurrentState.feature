@@ -6,7 +6,7 @@ on the current state to simulate the internal state of the SUT
   Scenario: Unlearn removes the current and following states
     Given that the mimicService is running
     And that no requests are stored
-		When I teach the mock the bellow sequense
+		When I teach the mock the below sequense
 	    |  question   |    response   |
       |    1+1      |       2       |
       |    1+1      |       3       |
@@ -65,14 +65,14 @@ on the current state to simulate the internal state of the SUT
 	Scenario: Store sequense and check that all states are stored after reset
 	  Given that the mimicService is running
 	  And that no requests are stored
-	  When I teach the mock the bellow sequense
+	  When I teach the mock the below sequense
 	    |  question   |    response   |
       |    1+1      |       2       |
       |    1+1      |       3       |
       |    1+1      |       4       |
       |    1+1      |       5       |
 	  And I call resetState
-	  Then every step in the stored sequense respondes with the stored response as bellow
+	  Then every step in the stored sequense respondes with the stored response as below
 	    |  question   |    response   |
       |    1+1      |       2       |
       |    1+1      |       3       |
