@@ -3,27 +3,34 @@ Feature: As a Tester I would like the mock to learn how to respond differently d
 on the current state to simulate the internal state of the SUT
 
 @currentState111
-  Scenario Outline: Unlearn question with multiple states
-    Given  that the mimicService is running
-    And that the mock has learned <questionOne> with <responseOne>
-    And that the mock has learned <questionOne> with <responseTwo>
-    And that the mock has learned <questionOne> with <responseThree>
-    When I call unlearn for <questionOne>
-    Then the mock unlearns <questionOne>
-   
-    Examples:
-      | questionOne| responseOne | responseTwo |responseThree| 
-      | "1+1"      |     "2"     | "4"         |   "6"       |
-   
+  Scenario: Unlearn removes the current and following states
+    Given that the mimicService is running
+    And that no requests are stored
+		When I teach the mock the bellow sequense
+	    |  question   |    response   |
+      |    1+1      |       2       |
+      |    1+1      |       3       |
+      |    1+1      |       4       |
+      |    1+1      |       5       |
+	  And I call resetState
+	  And I make the request "1+1"
+		And I make the request "1+1"
+		And I make the request "1+1"
+		And I call unlearn
+		And I make the request "1+1"
+	  Then "1+1" respondes with "3"
+
+    
  @currentState112     
    Scenario Outline: Unlearn question with one state
     Given  that the mimicService is running
     And that the mock has learned <questionOne> with <responseOne>
-    When I call unlearn for <questionOne>
+    When I call unlearn
     Then the mock unlearns <questionOne> 
     
      Examples:
       | questionOne| responseOne | 
+<<<<<<< HEAD
       | "1+1"      |     "2"     |         
  //stepBack ska tas bort
  @currentState113 
@@ -38,11 +45,13 @@ on the current state to simulate the internal state of the SUT
      Examples:
       | questionOne| responseOne | responseTwo |responseThree| 
       | "1+1"      |     "2"     | "4"         |   "6"       |
+=======
+      | "1+1"      |     "2"     |      
+>>>>>>> branch 'master' of https://github.com/vaffeljarnet/mimicTest
    
-   
-  @currentState114 
+  @currentState113 
    Scenario Outline: Set new state for request
-    Given  that the mimicService is running
+    Given that the mimicService is running
     And that the mock has learned <questionOne> with <responseOne>
     When I teach the mock that <questionOne> has response <responseTwo>
     When I teach the mock that <questionOne> has response <responseThree>
@@ -51,18 +60,21 @@ on the current state to simulate the internal state of the SUT
     Examples:
       | questionOne| responseOne | responseTwo |responseThree| 
       | "1+1"      |     "2"     | "4"         |   "6"       |
-  
-  
- @currentState115    
-   Scenario Outline: Unlearn multiple states with same response
-    Given  that the mimicService is running
-    And that the mock has learned <questionOne> with <responseOne>
-    And that the mock has learned <questionOne> with <responseTwo>
-    And that the mock has learned <questionOne> with <responseOne>
-    When I call unlearn for <questionOne>
-    And I call unlearn for <questionOne>
-    Then <questionOne> respondes with <responseOne>
-
-    Examples:
-      | questionOne| responseOne | responseTwo | 
-      | "1+1"      |     "2"     | "3"         |
+	  
+	@currentState114
+	Scenario: Store sequense and check that all states are stored after reset
+	  Given that the mimicService is running
+	  And that no requests are stored
+	  When I teach the mock the bellow sequense
+	    |  question   |    response   |
+      |    1+1      |       2       |
+      |    1+1      |       3       |
+      |    1+1      |       4       |
+      |    1+1      |       5       |
+	  And I call resetState
+	  Then every step in the stored sequense respondes with the stored response as bellow
+	    |  question   |    response   |
+      |    1+1      |       2       |
+      |    1+1      |       3       |
+      |    1+1      |       4       |
+      |    1+1      |       5       |
