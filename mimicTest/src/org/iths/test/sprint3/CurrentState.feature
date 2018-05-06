@@ -25,7 +25,7 @@ on the current state to simulate the internal state of the SUT
      Examples:
       | questionOne| responseOne | 
       | "1+1"      |     "2"     |         
- 
+ //stepBack ska tas bort
  @currentState113 
   Scenario Outline: Step one state back
     Given  that the mimicService is running
