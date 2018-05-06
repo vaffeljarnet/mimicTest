@@ -30,25 +30,8 @@ on the current state to simulate the internal state of the SUT
     
      Examples:
       | questionOne| responseOne | 
-<<<<<<< HEAD
       | "1+1"      |     "2"     |         
- //stepBack ska tas bort
- @currentState113 
-  Scenario Outline: Step one state back
-    Given  that the mimicService is running
-    And that the mock has learned <questionOne> with <responseOne>
-    And that the mock has learned <questionOne> with <responseTwo>
-    And that the mock has learned <questionOne> with <responseThree>
-    When I call stepBack for <questionOne>
-    Then <questionOne> respondes with <responseTwo>
-    
-     Examples:
-      | questionOne| responseOne | responseTwo |responseThree| 
-      | "1+1"      |     "2"     | "4"         |   "6"       |
-=======
-      | "1+1"      |     "2"     |      
->>>>>>> branch 'master' of https://github.com/vaffeljarnet/mimicTest
-   
+ 
   @currentState113 
    Scenario Outline: Set new state for request
     Given that the mimicService is running
