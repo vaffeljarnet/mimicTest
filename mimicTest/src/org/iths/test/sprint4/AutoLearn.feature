@@ -19,7 +19,7 @@ Feature: As a Tester I would like the mock to learn how to respond
     	|        question           |response|
     	|  mult?value1=3&value2=2   |    6   |
     	|  mult?value1=3&value2=3   |    9   |
-    Then "mult?value1=3&value2=4" respondes with "12"
+    Then "mult?value1=3&value2=4" respondes with "12" 
 
 @tag1
   Scenario: Learn how to subtract values from each other
