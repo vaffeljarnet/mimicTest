@@ -10,7 +10,7 @@ Feature: As a Tester I would like the mock to learn how to respond
     	|        question           |response|
     	|        div?4&2            |    2   |
     	|        div?60&20          |    3   |
-    Then "div?50&5" respondes with "10"
+    Then "div?value1=50&5" respondes with "10"
 
 @tag1
   Scenario: Learn how to multiply values with each other
