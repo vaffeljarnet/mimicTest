@@ -10,6 +10,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/org/iths/test/sprint3"
+		features = "classpath:org/iths/test/sprint3",
+		glue = {"classpath:org/iths/test/stepDefs"}
 		)
 public class Sprint3TestSuite {}

@@ -1,4 +1,4 @@
-package org.iths.test.sprint3;
+package org.iths.test.stepDefs;
 
 import org.iths.main.MimicGuiSelenium;
 
