@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class MimicGuiSelenium {
 
@@ -13,10 +15,16 @@ public class MimicGuiSelenium {
 	private WebDriver webdriver;
 
 	public MimicGuiSelenium() {
-		System.setProperty("webdriver.chrome.driver", "commonFiles/chromedrive/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "commonFiles/webDrivers/chromedriver.exe");
 		webdriver = new ChromeDriver();
 		webdriver.manage().window().maximize();
 		webdriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+	
+	public MimicGuiSelenium(String browser) {
+			webdriver = selectWebDriver(browser);
+			webdriver.manage().window().maximize();
+			webdriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	
 	public void openURL(String siteURL) {
@@ -50,6 +58,21 @@ public class MimicGuiSelenium {
 	
 	public void quitSelenium() {
 		webdriver.quit();
+	}
+	
+	private WebDriver selectWebDriver(String browser) {
+		if(browser.equalsIgnoreCase("chrome")) {
+			System.setProperty("webdriver.chrome.driver", "commonFiles/webDrivers/chromedriver.exe");
+			return new ChromeDriver();
+		}else if(browser.equalsIgnoreCase("firefox")){
+			System.setProperty("webdriver.gecko.driver", "commonFiles/webDrivers/geckodriver.exe");
+			return new FirefoxDriver();
+		}else if(browser.equalsIgnoreCase("edge")){
+			System.setProperty("webdriver.edge.driver", "commonFiles/webDrivers/MicrosoftWebDriver.exe");
+			return new EdgeDriver();
+		}else {
+			return null;
+		}
 	}
 	
 }
