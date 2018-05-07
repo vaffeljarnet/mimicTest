@@ -1,9 +1,23 @@
-@tag
 Feature: As a Tester I would like the mock to learn how to respond 
 				to requests that I have not defined so that I do not 
         have to create code for that manually (only add, mult, sub and div)
+@AutoLearn111
+  Scenario Outline: Learn how to calculate add, sub, mult and div
+    Given that the mimicService is running
+    When I teach the mock the below questions and responses
+    	|        question           |      response     |
+    	|      <questionOne>        |    <responseOne>  |
+    	|      <questionTwo>        |    <responseTwo>  |
+    Then <notKnownQuestion> respondes with <notKnownResponse>
+    
+    Examples:
+    	|       questionOne       | responseOne |       questionTwo          | responseTwo |     notKnownQuestion       | notKnownResponse |
+ 			| add?value1=1&value2=1   |     2       |   add?value1=1&value2=2    |      3      |  "add?value1=1&value2=3"   |       "4"        |
+ 			| sub?value1=5&value2=1   |     4       |    sub?value1=5&value2=2   |      3      |  "sub?value1=5&value2=3"   |       "2"        |
+ 			| mult?value1=3&value2=2  |     6       |   mult?value1=3&value2=3   |      9      |  "mult?value1=3&value2=4"  |       "12"       |
+ 			| div?value1=4&value2=2   |     2       |   div?value1=60&value2=20  |      3      |  "div?value1=8&value2=4"   |       "2"        |
 
-@tag1
+@AutoLearn112
   Scenario: Learn how to divide values with each other
     Given that the mimicService is running
     When I teach the mock the below questions and responses
@@ -12,7 +26,7 @@ Feature: As a Tester I would like the mock to learn how to respond
     	|  div?value1=60&value2=20  |    3   |
     Then "div?value1=50&value2=5" respondes with "10"
 
-@tag1
+@AutoLearn113
   Scenario: Learn how to multiply values with each other
     Given that the mimicService is running
     When I teach the mock the below questions and responses
@@ -21,7 +35,7 @@ Feature: As a Tester I would like the mock to learn how to respond
     	|  mult?value1=3&value2=3   |    9   |
     Then "mult?value1=3&value2=4" respondes with "12" 
 
-@tag1
+@AutoLearn114
   Scenario: Learn how to subtract values from each other
     Given that the mimicService is running
     When I teach the mock the below questions and responses
@@ -30,7 +44,7 @@ Feature: As a Tester I would like the mock to learn how to respond
     	|  sub?value1=5&value2=2    |    3   |
     Then "sub?value1=5&value2=3" respondes with "2"
 
-  @tag1
+@AutoLearn115
   Scenario: Learn how to add values together
     Given that the mimicService is running
     When I teach the mock the below questions and responses
