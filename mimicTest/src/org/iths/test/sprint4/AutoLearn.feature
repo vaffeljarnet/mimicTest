@@ -8,9 +8,9 @@ Feature: As a Tester I would like the mock to learn how to respond
     Given that the mimicService is running
     When I teach the mock the below questions and responses
     	|        question           |response|
-    	|  div?value1=4&value2=2    |    2   |
-    	|  div?value1=60&value2=20  |    3   |
-    Then "div?value1=50&value2=5" respondes with "10"
+    	|        div?4&2            |    2   |
+    	|        div?60&20          |    3   |
+    Then "div?50&5" respondes with "10"
 
 @tag1
   Scenario: Learn how to multiply values with each other
