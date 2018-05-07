@@ -1,5 +1,7 @@
 package org.iths.test.stepDefs;
 
+import static org.junit.Assert.fail;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -24,10 +26,10 @@ public class MimicStepDef {
 	
 	@Given("^that the mimicService is running$")
 	public void that_the_mimicService_is_running() throws Throwable {
-		if(service.executeGetRequest(host).equals("Error")) {
-		  helper.startMimic();
-	   }
-		service.executeGetRequest(host + "unlearnAll");	
+		if(helper.jarIsRunning()){
+		}else {
+			fail(helper.errorString());
+		}
 	}
 	
 	@Given("^that the mock has learned \"([^\"]*)\" with \"([^\"]*)\"$")
@@ -99,8 +101,8 @@ public class MimicStepDef {
 	@When("^I teach the mock the below questions and responses$")
 	public void i_teach_the_mock_multiple_questions_with_responses(DataTable arg1) throws Throwable {
 		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
-				service.executeGetRequest(host + "LearnNextResponse?text="+examples.get("Response"));
-				service.executeGetRequest(host + examples.get("Question")); 
+				service.executeGetRequest(host + "LearnNextResponse?text="+examples.get("response"));
+				service.executeGetRequest(host + examples.get("question")); 
 			}
 	}
 
