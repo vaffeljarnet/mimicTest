@@ -75,6 +75,7 @@ public class MimicStepDef {
 	
 	@Then("^\"([^\"]*)\" respondes with \"([^\"]*)\"$")
 	public void respondes_with(String arg1, String arg2) throws Throwable {
+		helper.wait(100);
 		Assert.assertEquals(arg2, service.executeGetRequest(host + arg1));
 	}
 	

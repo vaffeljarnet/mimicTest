@@ -16,7 +16,7 @@ Feature: As a Tester I would like the mock to learn how to respond
  			|"div?value1=4&value2=2"  |    "2"      |  "div?value1=60&value2=20" |     "3"     |  "div?value1=8&value2=4"   |       "2"        |
  			
  @AutoLearn112
-  Scenario Outline: Learn how to calculate add, sub, mult and div with double digit values
+  Scenario Outline: Learn how to calculate add with multiple digit values
     Given that the mimicService is running
     When I teach the mock that <questionOne> has response <responseOne>
     And I teach the mock that <questionTwo> has response <responseTwo>
@@ -25,4 +25,10 @@ Feature: As a Tester I would like the mock to learn how to respond
     Examples:
     	|       questionOne       | responseOne |       questionTwo          | responseTwo |     notKnownQuestion       | notKnownResponse |
  			|"add?value1=10&value2=20"|    "30"     | "add?value1=20&value2=20"  |     "40"    |  "add?value1=1&value2=2"   |       "3"        |
-       
+ 			
+  @AutoLearn113
+	Scenario: Calling with format "x?y"
+		Given that the mimicService is running
+	  When I make the request "test?ett"
+	  Then "test?ett" returns the response form 
+   

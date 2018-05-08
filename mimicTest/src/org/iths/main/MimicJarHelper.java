@@ -3,6 +3,7 @@ package org.iths.main;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class MimicJarHelper {
 
@@ -13,10 +14,12 @@ public class MimicJarHelper {
 		service = new HttpServiceCaller();
 		if(!service.executeGetRequest(host).equals("Error")) {
 			killMimic();
+			removeBrainFile();
 			startMimic();
 			resetMimic();
 			return true;
 		}else if(service.executeGetRequest(host).equals("Error")) {
+			removeBrainFile();
 			startMimic();
 			resetMimic();
 			return true;
@@ -28,7 +31,7 @@ public class MimicJarHelper {
 	public void resetMimic() {
 		service = new HttpServiceCaller();
 		service.executeGetRequest(host+"unlearnAll");
-		wait(100);
+		wait(200);
 	}
 	
 	public void startMimic() {
@@ -42,7 +45,7 @@ public class MimicJarHelper {
 	public void killMimic() {
 		service = new HttpServiceCaller();
 		service.executeGetRequest("http://localhost:8080/KillMimic");
-		wait(100);
+		wait(500);
 	}
 	
 	public String errorString() {
@@ -54,6 +57,13 @@ public class MimicJarHelper {
 			Thread.sleep(milliseconds);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void removeBrainFile() {
+		File brain = new File("brain");
+		if(brain.exists()) {
+			brain.delete();
 		}
 	}
 }
