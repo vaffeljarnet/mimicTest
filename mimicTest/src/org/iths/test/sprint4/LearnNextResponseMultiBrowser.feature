@@ -20,7 +20,7 @@ Feature: LearnNextResponse does not work in some
     And I close the browser
     Then "1+1" respondes with "2"
     
-  @LearnNextResponseMultiBrowser112
+  @LearnNextResponseMultiBrowser113
   Scenario: LearnNextResponse in Edge
     Given that the mimicService is running
     When I open the url "learnNextResponse?text=2" in Edge
