@@ -28,9 +28,48 @@ Feature: As a Tester I would like the mock to learn how to respond
  			|"add?value1=111&value2=111"|    "222"     | "add?value1=222&value2=222"  |     "444"    |  "add?value1=1&value2=1"   |       "1"        |
  	
  	#Try to end test case when not completing		
-  @AutoLearn113
-	Scenario: Calling with format "x?y"
-		Given that the mimicService is running
-	  When I make the request "test?ett"
-	  Then "test?ett" returns the response form 
+  #@AutoLearn113
+	#Scenario: Calling with format "x?y"
+	#	Given that the mimicService is running
+	 # When I make the request "test?ett"
+	 # Then "test?ett" returns the response form 
+	  
+	@AutoLearn114
+  Scenario: Learn how to calculate add while alternating with mult
+    Given that the mimicService is running
+    When I teach the mock that "add?value1=1&value2=2" has response "3" 
+    And I teach the mock that "mult?value1=3&value2=2" has response "6"
+    And I teach the mock that "add?value1=1&value2=1" has response "2"
+    Then "add?value1=1&value2=3" respondes with "4"
+    
+  @AutoLearn115
+  Scenario: UnlearnAll removes all learned formats
+    Given that the mimicService is running
+    And that the mock has learned "add?value1=1&value2=2" with "3" 
+    And that the mock has learned "add?value1=1&value2=1" with "2"
+    And "add?value1=1&value2=3" respondes with "4"
+    When I write unlearnAll in url
+		Then "add?value1=1&value2=3" returns the response form
+		
+	@AutoLearn116
+  Scenario: Terminating Mimic does not remove learned formats
+    Given that the mimicService is running
+    And that the mock has learned "add?value1=1&value2=2" with "3" 
+    And that the mock has learned "add?value1=1&value2=1" with "2"
+    And "add?value1=1&value2=3" respondes with "4"
+    When I terminate the mimicService
+    And I start mimicService
+		Then "add?value1=1&value2=3" respondes with "4"
+		
+	@AutoLearn117
+  Scenario: Correcting a request does not affect learned formats
+    Given that the mimicService is running
+    And that the mock has learned "add?value1=10&value2=20" with "30" 
+    And that the mock has learned "add?value1=20&value2=20" with "40"
+    And "add?value1=1&value2=3" does not responde with "4"
+    When I teach the mock that "add?value1=1&value2=3" has response "4"
+		Then "add?value1=15&value2=5" respondes with "20"
+		
+		
+	  
    

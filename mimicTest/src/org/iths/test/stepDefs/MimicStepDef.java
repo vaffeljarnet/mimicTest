@@ -79,6 +79,12 @@ public class MimicStepDef {
 		Assert.assertEquals(arg2, service.executeGetRequest(host + arg1));
 	}
 	
+	@Then("^\"([^\"]*)\" does not responde with \"([^\"]*)\"$")
+	public void does_not_responde_with(String arg1, String arg2) throws Throwable {
+		helper.wait(100);
+		Assert.assertFalse(service.executeGetRequest(host + arg1).equals(arg2));
+	}
+	
 	@When("^I call unlearn")
 	public void i_call_unlearn() throws Throwable {
 	    service.executeGetRequest(host+"unlearn");
@@ -108,9 +114,9 @@ public class MimicStepDef {
 	public void i_teach_the_mock_multiple_questions_with_responses(DataTable arg1) throws Throwable {
 		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
 				service.executeGetRequest(host + "LearnNextResponse?text="+examples.get("response"));
-				helper.wait(500);
+				helper.wait(200);
 				service.executeGetRequest(host + examples.get("question"));
-				helper.wait(500);
+				helper.wait(200);
 			}
 	}
 
@@ -118,7 +124,7 @@ public class MimicStepDef {
 	public void every_question_respondes_with_correct_response(DataTable arg1) throws Throwable {
 		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
 			Assert.assertEquals(examples.get("response"), service.executeGetRequest(host + examples.get("question"))); 
-			helper.wait(500);
+			helper.wait(200);
 		}
 	}
 
@@ -132,9 +138,19 @@ public class MimicStepDef {
 	public void i_teach_the_mock_the_bellow_sequense(DataTable arg1) throws Throwable {
 		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
 			service.executeGetRequest(host + "LearnNextResponse?text="+examples.get("response"));
-			helper.wait(500);
+			helper.wait(200);
 			service.executeGetRequest(host + examples.get("question"));
-			helper.wait(500);
+			helper.wait(200);
+		}
+	}
+	
+	@When("^the mock has learned the below sequense$")
+	public void the_mock_has_learned_the_bellow_sequense(DataTable arg1) throws Throwable {
+		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
+			service.executeGetRequest(host + "LearnNextResponse?text="+examples.get("response"));
+			helper.wait(200);
+			service.executeGetRequest(host + examples.get("question"));
+			helper.wait(200);
 		}
 	}
 
@@ -142,7 +158,7 @@ public class MimicStepDef {
 	public void every_step_in_the_stored_sequense_respondes_with_the_correct_response_as_bellow(DataTable arg1) throws Throwable {
 		for (Map<String, String> examples : arg1.asMaps(String.class, String.class)) {
 			Assert.assertEquals(examples.get("response"), service.executeGetRequest(host + examples.get("question")));
-			helper.wait(500);
+			helper.wait(200);
 		}
 	}
 
