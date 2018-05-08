@@ -44,6 +44,11 @@ public class MimicStepDef {
 		Assert.assertEquals(responseForm, service.executeGetRequest(host + arg1));
 	}
 	
+	@Then("^\"([^\"]*)\" returns the response form$")
+	public void returns_the_response_form(String arg1) throws Throwable {
+		Assert.assertEquals(responseForm, service.executeGetRequest(host + arg1));
+	}
+	
 	@When("^I write unlearnAll in url$")
 	public void i_write_unlearnAll_in_url() throws Throwable {
 	  service.executeGetRequest(host + "unlearnAll");
