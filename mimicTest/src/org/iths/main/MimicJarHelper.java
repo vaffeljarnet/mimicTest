@@ -12,13 +12,10 @@ public class MimicJarHelper {
 	public boolean jarIsRunning() {
 		service = new HttpServiceCaller();
 		if(!service.executeGetRequest(host).equals("Error")) {
-			killMimic();
-			startMimic();
 			resetMimic();
 			return true;
 		}else if(service.executeGetRequest(host).equals("Error")) {
-			startMimic();
-			resetMimic();
+			System.out.println(errorString());
 			return true;
 		}else {
 			return false;
