@@ -25,7 +25,9 @@ Feature: As a Tester I would like the mock to learn how to respond
     Examples:
     	|       questionOne         | responseOne  |       questionTwo            | responseTwo  |     notKnownQuestion       | notKnownResponse |
  			|"add?value1=10&value2=20"  |    "30"      | "add?value1=20&value2=20"    |     "40"     |  "add?value1=1&value2=2"   |       "3"        |
- 			|"add?value1=111&value2=111"|    "222"     | "add?value1=222&value2=222"  |     "444"    |  "add?value1=1&value2=1"   |       "1"        |
+ 			|"add?value1=15&value2=15"  |    "30"      | "add?value1=25&value2=25"    |     "50"     |  "add?value1=1&value2=1"   |       "2"        |
+ 			|"add?value1=26&value2=16"  |    "42"      | "add?value1=36&value2=46"    |     "82"     |  "add?value1=1&value2=1"   |       "2"        |
+ 			|"add?value1=111&value2=111"|    "222"     | "add?value1=222&value2=222"  |     "444"    |  "add?value1=1&value2=1"   |       "2"        |
  	
  	#Try to end test case when not completing		
   #@AutoLearn113
